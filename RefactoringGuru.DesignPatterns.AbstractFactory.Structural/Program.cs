@@ -69,7 +69,7 @@ namespace RefactoringGuru.DesignPatterns.AbstractFactory.Structural
     {
         public string UsefulFunctionB()
         {
-            return "The result of the product B1.\n";
+            return "The result of the product B1.";
         }
 
         public string AnotherUsefulFunctionB(IAbstractProductA collaborator)
@@ -84,7 +84,7 @@ namespace RefactoringGuru.DesignPatterns.AbstractFactory.Structural
     {
         public string UsefulFunctionB()
         {
-            return "The result of the product B2.\n";
+            return "The result of the product B2.";
         }
 
         public string AnotherUsefulFunctionB(IAbstractProductA collaborator)
@@ -100,11 +100,11 @@ namespace RefactoringGuru.DesignPatterns.AbstractFactory.Structural
     {
         public void Main()
         {
-            Console.Write("Client: Testing client code with the first factory type...\n");
+            Console.WriteLine("Client: Testing client code with the first factory type...");
             ClientMethod(new ConcreteFactory1());
-            Console.Write("\n\n");
+            Console.WriteLine();
 
-            Console.Write("Client: Testing the same client code with the second factory type...\n");
+            Console.WriteLine("Client: Testing the same client code with the second factory type...");
             ClientMethod(new ConcreteFactory2());
         }
 
@@ -113,8 +113,8 @@ namespace RefactoringGuru.DesignPatterns.AbstractFactory.Structural
             var productA = factory.CreateProductA();
             var productB = factory.CreateProductB();
 
-            Console.Write(productB.UsefulFunctionB());
-            Console.Write(productB.AnotherUsefulFunctionB(productA));
+            Console.WriteLine(productB.UsefulFunctionB());
+            Console.WriteLine(productB.AnotherUsefulFunctionB(productA));
         }
     }
 
