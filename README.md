@@ -11,28 +11,49 @@ It contains C# examples for all classic GoF design patterns. Each pattern includ
 
 This repository is in the very initial state at the monent.
 
-- [ ] Factory-method: RealLife
-- [ ] Abstract-factory: RealLife
-- [ ] Builder: RealLife
-- [ ] Prototype: RealLife
-- [ ] Singleton: RealLife
-- [ ] Adapter: RealLife
-- [ ] Bridge: RealLife
-- [ ] Composite: RealLife
-- [ ] Decorator: RealLife
-- [ ] Facade: RealLife
-- [ ] Flyweight: RealLife
-- [ ] Proxy: RealLife
-- [ ] Chain-of-responsibility: RealLife
-- [ ] Command: RealLife
-- [ ] Iterator: RealLife
-- [ ] Mediator: RealLife
-- [ ] Memento: RealLife
-- [ ] Observer: RealLife
-- [ ] State: RealLife
-- [ ] Strategy: RealLife
-- [ ] Template-method: RealLife
-- [ ] Visitor: RealLife
+- [ ] Builder: Structural
+- [ ] Prototype: Structural
+- [ ] Singleton: Structural
+- [ ] Adapter: Structural
+- [ ] Bridge: Structural
+- [ ] Composite: Structural
+- [ ] Decorator: Structural
+- [ ] Facade: Structural
+- [ ] Flyweight: Structural
+- [ ] Proxy: Structural
+- [ ] Chain-of-responsibility: Structural
+- [ ] Command: Structural
+- [ ] Iterator: Structural
+- [ ] Mediator: Structural
+- [ ] Memento: Structural
+- [ ] Observer: Structural
+- [ ] State: Structural
+- [ ] Strategy: Structural
+- [ ] Template-method: Structural
+- [ ] Visitor: Structural
+
+- [ ] Factory-method: RealWorld
+- [ ] Abstract-factory: RealWorld
+- [ ] Builder: RealWorld
+- [ ] Prototype: RealWorld
+- [ ] Singleton: RealWorld
+- [ ] Adapter: RealWorld
+- [ ] Bridge: RealWorld
+- [ ] Composite: RealWorld
+- [ ] Decorator: RealWorld
+- [ ] Facade: RealWorld
+- [ ] Flyweight: RealWorld
+- [ ] Proxy: RealWorld
+- [ ] Chain-of-responsibility: RealWorld
+- [ ] Command: RealWorld
+- [ ] Iterator: RealWorld
+- [ ] Mediator: RealWorld
+- [ ] Memento: RealWorld
+- [ ] Observer: RealWorld
+- [ ] State: RealWorld
+- [ ] Strategy: RealWorld
+- [ ] Template-method: RealWorld
+- [ ] Visitor: RealWorld
 
 
 ## Requirements

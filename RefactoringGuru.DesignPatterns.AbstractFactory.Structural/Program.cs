@@ -2,95 +2,94 @@
 
 namespace RefactoringGuru.DesignPatterns.AbstractFactory.Structural
 {
-
-    interface AbstractFactory
+    interface IAbstractFactory
     {
-        AbstractProductA createProductA();
+        IAbstractProductA CreateProductA();
 
-        AbstractProductB createProductB();
+        IAbstractProductB CreateProductB();
     }
 
-    class ConcreteFactory1 : AbstractFactory
+    class ConcreteFactory1 : IAbstractFactory
     {
-        public AbstractProductA createProductA()
+        public IAbstractProductA CreateProductA()
         {
             return new ConcreteProductA1();
         }
 
-        public AbstractProductB createProductB()
+        public IAbstractProductB CreateProductB()
         {
             return new ConcreteProductB1();
         }
     }
 
-    class ConcreteFactory2 : AbstractFactory
+    class ConcreteFactory2 : IAbstractFactory
     {
-        public AbstractProductA createProductA()
+        public IAbstractProductA CreateProductA()
         {
             return new ConcreteProductA2();
         }
 
-        public AbstractProductB createProductB()
+        public IAbstractProductB CreateProductB()
         {
             return new ConcreteProductB2();
         }
     }
 
 
-    interface AbstractProductA
+    interface IAbstractProductA
     {
-        string usefulFunctionA();
+        string UsefulFunctionA();
     }
 
-    class ConcreteProductA1 : AbstractProductA
+    class ConcreteProductA1 : IAbstractProductA
     {
-        public string usefulFunctionA()
+        public string UsefulFunctionA()
         {
             return "The result of the product A1.";
         }
     }
 
-    class ConcreteProductA2 : AbstractProductA
+    class ConcreteProductA2 : IAbstractProductA
     {
-        public string usefulFunctionA()
+        public string UsefulFunctionA()
         {
             return "The result of the product A2.";
         }
     }
 
 
-    interface AbstractProductB
+    interface IAbstractProductB
     {
-        string usefulFunctionB();
+        string UsefulFunctionB();
 
-        string anotherUsefulFunctionB(AbstractProductA collaborator);
+        string AnotherUsefulFunctionB(IAbstractProductA collaborator);
     }
 
-    class ConcreteProductB1 : AbstractProductB
+    class ConcreteProductB1 : IAbstractProductB
     {
-        public string usefulFunctionB()
+        public string UsefulFunctionB()
         {
             return "The result of the product B1.\n";
         }
 
-        public string anotherUsefulFunctionB(AbstractProductA collaborator)
+        public string AnotherUsefulFunctionB(IAbstractProductA collaborator)
         {
-            string result = collaborator.usefulFunctionA();
+            var result = collaborator.UsefulFunctionA();
 
             return $"The result of the B1 collaborating with the ({result})";
         }
     }
 
-    class ConcreteProductB2 : AbstractProductB
+    class ConcreteProductB2 : IAbstractProductB
     {
-        public string usefulFunctionB()
+        public string UsefulFunctionB()
         {
             return "The result of the product B2.\n";
         }
 
-        public string anotherUsefulFunctionB(AbstractProductA collaborator)
+        public string AnotherUsefulFunctionB(IAbstractProductA collaborator)
         {
-            string result = collaborator.usefulFunctionA();
+            var result = collaborator.UsefulFunctionA();
 
             return $"The result of the B2 collaborating with the ({result})";
         }
@@ -99,32 +98,31 @@ namespace RefactoringGuru.DesignPatterns.AbstractFactory.Structural
 
     class Client
     {
-        public void main()
+        public void Main()
         {
-            Console.Write("Client: Testing client code with the first factory type:\n");
-            clientMethod(new ConcreteFactory1());
+            Console.Write("Client: Testing client code with the first factory type...\n");
+            ClientMethod(new ConcreteFactory1());
             Console.Write("\n\n");
 
-            Console.Write("Client: Testing the same client code with the second factory type:\n");
-            clientMethod(new ConcreteFactory2());
+            Console.Write("Client: Testing the same client code with the second factory type...\n");
+            ClientMethod(new ConcreteFactory2());
         }
 
-        public void clientMethod(AbstractFactory factory)
+        public void ClientMethod(IAbstractFactory factory)
         {
-            AbstractProductA product_a = factory.createProductA();
-            AbstractProductB product_b = factory.createProductB();
+            var productA = factory.CreateProductA();
+            var productB = factory.CreateProductB();
 
-            Console.Write(product_b.usefulFunctionB());
-            Console.Write(product_b.anotherUsefulFunctionB(product_a));
+            Console.Write(productB.UsefulFunctionB());
+            Console.Write(productB.AnotherUsefulFunctionB(productA));
         }
     }
-
 
     class Program
     {
         static void Main(string[] args)
         {
-            (new Client()).main();
+            new Client().Main();
         }
     }
 }
