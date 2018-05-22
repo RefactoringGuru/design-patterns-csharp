@@ -1,0 +1,25 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactoringGuru.DesignPatterns.AbstractFactory.Structural", "RefactoringGuru.DesignPatterns.AbstractFactory.Structural\RefactoringGuru.DesignPatterns.AbstractFactory.Structural.csproj", "{572B9238-2B81-45B8-B9B3-E8FEF0793384}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FCD7129C-B686-4B85-96F1-0CCD4ABFDD9F}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{572B9238-2B81-45B8-B9B3-E8FEF0793384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{572B9238-2B81-45B8-B9B3-E8FEF0793384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{572B9238-2B81-45B8-B9B3-E8FEF0793384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{572B9238-2B81-45B8-B9B3-E8FEF0793384}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+EndGlobal
