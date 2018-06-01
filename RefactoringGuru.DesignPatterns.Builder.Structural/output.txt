@@ -1,0 +1,11 @@
+﻿Standart basic product:
+
+Product parts: Part A |
+
+
+Standart full featured product:
+
+Product parts: Part A | Part B | Part C |
+
+
+Product parts: Part A | Part C |
