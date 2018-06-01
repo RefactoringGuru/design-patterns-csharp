@@ -4,26 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProxyPattern
+namespace RefactoringGuru.DesignPatterns.Proxy.Structural
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Client: Executing the client code with a real subject:\n");
+            Client client = new Client();
+            Console.WriteLine("Client: Executing the client code with a real subject:");
 
             RealSubject realSubject = new RealSubject();
-            realSubject.Request();
 
-            Console.WriteLine("\n");
+            client.ClientCode(realSubject);
 
-            Console.WriteLine("Client: Executing the same client code with a proxy:\n");
+            Console.WriteLine();
+
+            Console.WriteLine("Client: Executing the same client code with a proxy:");
+
             Proxy proxy = new Proxy();
-            proxy.Request();
+
+            client.ClientCode(proxy);
         }
     }
 
-    abstract class Subject
+    public class Client
+    {
+        public void ClientCode(Subject subject)
+        {
+            subject.Request();
+        }
+    }
+
+    public abstract class Subject
     {
         public abstract void Request();
     }
@@ -35,9 +47,11 @@ namespace ProxyPattern
             Console.WriteLine("RealSubject: Handling Request.");
         }
     }
+
     class Proxy : Subject
     {
         RealSubject realSubject;
+        
         public override void Request()
         {
             if (this.checkAccess())
@@ -49,7 +63,6 @@ namespace ProxyPattern
             }
 
         }
-
         public bool checkAccess()
         {
             Console.WriteLine("Proxy: Checking access prior to firing a real request.");

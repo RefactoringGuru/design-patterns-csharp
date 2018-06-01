@@ -1,11 +1,8 @@
 ﻿Standart basic product:
-
-Product parts: Part A |
-
+Product parts: PartA1
 
 Standart full featured product:
+Product parts: PartA1, PartB1, PartC1
 
-Product parts: Part A | Part B | Part C |
-
-
-Product parts: Part A | Part C |
+Custom product:
+Product parts: PartA1, PartC1

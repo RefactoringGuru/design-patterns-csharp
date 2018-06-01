@@ -4,42 +4,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuilderPattern
+namespace RefactoringGuru.DesignPatterns.Builder.Structural
 {
     class Program
     {
-        /**
- * The client code creates a builder object, passes it to the director and then
- * initiates the construction process. The end result is retrieved from the
- * builder object.
- */
         static void Main(string[] args)
         {
             Builder builder = new ConcreteBuilder();
             Director director = new Director(builder);
 
-            Console.WriteLine("Standart basic product:\n");
+            Client client = new Client();
+            client.ClientCode(director, builder);
+        }
+    }
+
+    public class Client
+    {
+        public void ClientCode(Director director, Builder builder)
+        {
+            Console.WriteLine("Standart basic product:");
             director.buildMinimalViableProduct();
             Console.WriteLine(builder.GetProduct().ListParts());
 
-            Console.WriteLine("Standart full featured product:\n");
+            Console.WriteLine("Standart full featured product:");
             director.buildFullFeaturedProduct();
             Console.WriteLine(builder.GetProduct().ListParts());
 
-            // Remember, the Builder pattern can be used without a Director class.
+            Console.WriteLine("Custom product:");
             builder.BuildPartA();
             builder.BuildPartC();
             Console.WriteLine(builder.GetProduct().ListParts());
         }
     }
 
-    class Director
+    public class Director
     {
         Builder builder;
+
         public Director(Builder builder)
         {
             this.builder = builder;
         }
+
         public void buildMinimalViableProduct()
         {
             builder.BuildPartA();
@@ -52,7 +58,7 @@ namespace BuilderPattern
         }
     }
 
-    abstract class Builder
+    public abstract class Builder
     {
         public abstract void BuildPartA();
         public abstract void BuildPartB();
@@ -60,42 +66,43 @@ namespace BuilderPattern
         public abstract Product GetProduct();
     }
 
-    class Product
+    public class Product
     {
         List<object> parts = new List<object>();
         public void Add(string part)
         {
             parts.Add(part);
         }
-
         public string ListParts()
         {
             string str = string.Empty;
 
             for (int i = 0; i < parts.Count; i++)
-                str += parts[i] + " | ";
+            {
+                str += parts[i] + ", ";
+            }
 
-            return "Product parts: " + str + "\n\n";
+            str = str.Remove(str.Length - 2); // removing last ",c"
+
+            return "Product parts: " + str + "\n";
         }
     }
 
-    class ConcreteBuilder : Builder
+    public class ConcreteBuilder : Builder
     {
         Product product = new Product();
         public override void BuildPartA()
         {
-            product.Add("Part A");
+            product.Add("PartA1");
         }
         public override void BuildPartB()
         {
-            product.Add("Part B");
+            product.Add("PartB1");
         }
         public override void BuildPartC()
         {
-            product.Add("Part C");
+            product.Add("PartC1");
         }
-
-
         public override Product GetProduct()
         {
             Product result = product;
@@ -104,7 +111,6 @@ namespace BuilderPattern
 
             return result;
         }
-
         public void Reset()
         {
             product = new Product();

@@ -5,25 +5,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IteratorPattern
+namespace RefactoringGuru.DesignPatterns.Iterator.Structural
 {
     class Program
     {
         public static void Main()
+        {
+            Client client = new Client();
+            client.ClientCode();
+        }
+    }
+
+    public class Client
+    {
+        public void ClientCode()
         {
             var collection = new WordsCollection();
             collection.AddItem("First");
             collection.AddItem("Second");
             collection.AddItem("Third");
 
-            Console.WriteLine("Straight traversal:\n");
+            Console.WriteLine("Straight traversal:");
 
-            foreach(var element in collection)
+            foreach (var element in collection)
             {
                 Console.WriteLine(element);
             }
 
-            Console.WriteLine("\nReverse traversal:\n");
+            Console.WriteLine("\nReverse traversal:");
 
             collection.ReverseDirection();
 
@@ -43,6 +52,7 @@ namespace IteratorPattern
         public abstract bool MoveNext();
         public abstract void Reset();
     }
+
     abstract class IteratorAggregate : IEnumerable
     {
         public abstract IEnumerator GetEnumerator();
@@ -52,7 +62,6 @@ namespace IteratorPattern
     {
         private WordsCollection _collection;
         private int _position = -1;
-
         private bool _reverse = false;
 
         public AlphabeticalOrderIterator(WordsCollection collection, bool reverse = false)
@@ -61,9 +70,10 @@ namespace IteratorPattern
             this._reverse = reverse;
 
             if (reverse)
+            {
                 _position = collection.getItems().Count;
+            }
         }
-
         public override object Current()
         {
             return _collection.getItems()[_position];
@@ -73,7 +83,6 @@ namespace IteratorPattern
         {
             return _position;
         }
-
         public override bool MoveNext()
         {
             int updatedPosition = this._position + (this._reverse ? -1 : 1);
@@ -83,10 +92,12 @@ namespace IteratorPattern
                 this._position = updatedPosition;
                 return true;
             }
-            else return false;
+            else
+            {
+                return false;
+            }
             
         }
-        
         public override void Reset()
         {
             this._position = this._reverse ? this._collection.getItems().Count - 1 : 0;
@@ -106,7 +117,6 @@ namespace IteratorPattern
         {
             return _collection;
         }
-
         public void AddItem(string item)
         {
             this._collection.Add(item);
