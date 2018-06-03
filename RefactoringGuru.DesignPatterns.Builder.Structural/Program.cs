@@ -50,6 +50,7 @@ namespace RefactoringGuru.DesignPatterns.Builder.Structural
         {
             builder.BuildPartA();
         }
+		
         public void buildFullFeaturedProduct()
         {
             builder.BuildPartA();
@@ -61,18 +62,23 @@ namespace RefactoringGuru.DesignPatterns.Builder.Structural
     public abstract class Builder
     {
         public abstract void BuildPartA();
+		
         public abstract void BuildPartB();
+		
         public abstract void BuildPartC();
+		
         public abstract Product GetProduct();
     }
 
     public class Product
     {
         List<object> parts = new List<object>();
+		
         public void Add(string part)
         {
             parts.Add(part);
         }
+		
         public string ListParts()
         {
             string str = string.Empty;
@@ -91,18 +97,22 @@ namespace RefactoringGuru.DesignPatterns.Builder.Structural
     public class ConcreteBuilder : Builder
     {
         Product product = new Product();
+		
         public override void BuildPartA()
         {
             product.Add("PartA1");
         }
+		
         public override void BuildPartB()
         {
             product.Add("PartB1");
         }
+		
         public override void BuildPartC()
         {
             product.Add("PartC1");
         }
+		
         public override Product GetProduct()
         {
             Product result = product;
@@ -111,6 +121,7 @@ namespace RefactoringGuru.DesignPatterns.Builder.Structural
 
             return result;
         }
+		
         public void Reset()
         {
             product = new Product();

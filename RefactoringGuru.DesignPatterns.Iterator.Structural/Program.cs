@@ -48,8 +48,11 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Structural
         object IEnumerator.Current => Current();
 
         public abstract int Key();
+		
         public abstract object Current();
+		
         public abstract bool MoveNext();
+		
         public abstract void Reset();
     }
 
@@ -61,7 +64,9 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Structural
     class AlphabeticalOrderIterator : Iterator
     {
         private WordsCollection _collection;
+		
         private int _position = -1;
+		
         private bool _reverse = false;
 
         public AlphabeticalOrderIterator(WordsCollection collection, bool reverse = false)
@@ -74,6 +79,7 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Structural
                 _position = collection.getItems().Count;
             }
         }
+		
         public override object Current()
         {
             return _collection.getItems()[_position];
@@ -83,6 +89,7 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Structural
         {
             return _position;
         }
+		
         public override bool MoveNext()
         {
             int updatedPosition = this._position + (this._reverse ? -1 : 1);
@@ -98,6 +105,7 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Structural
             }
             
         }
+		
         public override void Reset()
         {
             this._position = this._reverse ? this._collection.getItems().Count - 1 : 0;
@@ -107,20 +115,24 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Structural
     class WordsCollection : IteratorAggregate
     {
         List<string> _collection = new List<string>();
+		
         bool _direction = false;
         
         public void ReverseDirection()
         {
             _direction = !_direction;
         }
+		
         public List<string> getItems()
         {
             return _collection;
         }
+		
         public void AddItem(string item)
         {
             this._collection.Add(item);
         }
+		
         public override IEnumerator GetEnumerator()
         {
             return new AlphabeticalOrderIterator(this, _direction);
