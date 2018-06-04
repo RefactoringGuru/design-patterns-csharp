@@ -11,7 +11,6 @@ It contains C# examples for all classic GoF design patterns. Each pattern includ
 
 This repository is in the very initial state at the monent.
 
-- [ ] Builder: Structural
 - [ ] Prototype: Structural
 - [ ] Singleton: Structural
 - [ ] Adapter: Structural
@@ -20,10 +19,8 @@ This repository is in the very initial state at the monent.
 - [ ] Decorator: Structural
 - [ ] Facade: Structural
 - [ ] Flyweight: Structural
-- [ ] Proxy: Structural
 - [ ] Chain-of-responsibility: Structural
 - [ ] Command: Structural
-- [ ] Iterator: Structural
 - [ ] Mediator: Structural
 - [ ] Memento: Structural
 - [ ] Observer: Structural
@@ -31,6 +28,8 @@ This repository is in the very initial state at the monent.
 - [ ] Strategy: Structural
 - [ ] Template-method: Structural
 - [ ] Visitor: Structural
+
+---
 
 - [ ] Factory-method: RealWorld
 - [ ] Abstract-factory: RealWorld
