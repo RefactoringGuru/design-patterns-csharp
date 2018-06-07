@@ -2,40 +2,12 @@
 
 namespace RefactoringGuru.DesignPatterns.Adapter.Structural
 {
-    class Program
-    {
-        static void Main()
-        {
-            RoundHole hole = new RoundHole(5);
-            RoundPeg rpeg = new RoundPeg(5);
-            if (hole.Fits(rpeg))
-            {
-                Console.WriteLine("Round peg r5 fits round hole r5.");
-            }
-
-            SquarePeg smallSqPeg = new SquarePeg(2);
-            SquarePeg largeSqPeg = new SquarePeg(20);
-            // hole.fits(smallSqPeg); // not compiled
-
-            SquarePegAdapter smallSqPegAdapter = new SquarePegAdapter(smallSqPeg);
-            SquarePegAdapter largeSqPegAdapter = new SquarePegAdapter(largeSqPeg);
-            if (hole.Fits(smallSqPegAdapter))
-            {
-                Console.WriteLine("Square peg w2 fits round hole r5.");
-            }
-            if (!hole.Fits(largeSqPegAdapter))
-            {
-                Console.WriteLine("Square peg w20 does not fit into round hole r5.");
-            }
-        }
-    }
-
-    public interface IRoundForm
+    interface IRoundForm
     {
         double GetRadius();
     }
 
-    public class RoundHole
+    class RoundHole
     {
         private readonly double _radius;
 
@@ -55,7 +27,7 @@ namespace RefactoringGuru.DesignPatterns.Adapter.Structural
         }
     }
 
-    public class RoundPeg : IRoundForm
+    class RoundPeg : IRoundForm
     {
         private readonly double _radius;
 
@@ -70,9 +42,9 @@ namespace RefactoringGuru.DesignPatterns.Adapter.Structural
         }
     }
 
-    public class SquarePeg
+    class SquarePeg
     {
-        private double _width;
+        private readonly double _width;
 
         public SquarePeg(double width)
         {
@@ -90,7 +62,7 @@ namespace RefactoringGuru.DesignPatterns.Adapter.Structural
         }
     }
 
-    public class SquarePegAdapter : IRoundForm
+    class SquarePegAdapter : IRoundForm
     {
         private readonly SquarePeg _peg;
 
@@ -101,7 +73,46 @@ namespace RefactoringGuru.DesignPatterns.Adapter.Structural
 
         public double GetRadius()
         {
-            return Math.Sqrt(Math.Pow((_peg.GetWidth() / 2), 2) * 2);
+            return Math.Sqrt(Math.Pow(_peg.GetWidth() / 2, 2) * 2);
+        }
+    }
+
+    class Client
+    {
+        public void Main()
+        {
+            RoundHole hole = new RoundHole(5);
+            RoundPeg rpeg = new RoundPeg(5);
+
+            if (hole.Fits(rpeg))
+            {
+                Console.WriteLine("Round peg r5 fits round hole r5.");
+            }
+
+            SquarePeg smallSqPeg = new SquarePeg(2);
+            SquarePeg largeSqPeg = new SquarePeg(20);
+            // hole.fits(smallSqPeg); // not compiled
+
+            SquarePegAdapter smallSqPegAdapter = new SquarePegAdapter(smallSqPeg);
+            SquarePegAdapter largeSqPegAdapter = new SquarePegAdapter(largeSqPeg);
+
+            if (hole.Fits(smallSqPegAdapter))
+            {
+                Console.WriteLine("Square peg w2 fits round hole r5.");
+            }
+
+            if (!hole.Fits(largeSqPegAdapter))
+            {
+                Console.WriteLine("Square peg w20 does not fit into round hole r5.");
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            new Client().Main();
         }
     }
 }
