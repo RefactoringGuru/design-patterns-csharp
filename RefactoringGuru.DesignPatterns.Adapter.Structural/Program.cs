@@ -2,78 +2,62 @@
 
 namespace RefactoringGuru.DesignPatterns.Adapter.Structural
 {
-    interface IRoundForm
+    /// <summary>
+    /// EN: Adapter Design Pattern
+    ///
+    /// Converts the interface of a class into the interface clients expect.
+    /// Adapter lets classes work together where they otherwise couldn't, due to incompatible interfaces.
+    /// 
+    /// RU: Паттерн Адаптер
+    /// 
+    /// Преобразует интерфейс одного класса к интерфейсу другого класса.
+    /// Адаптер позволяет классам работать друг с другом, даже если их интерфейсы несовместимы.
+    /// </summary>
+
+
+    /// <summary>
+    /// EN: ITarget defines interface expected by the client.
+    /// 
+    /// RU: ITarget определяет интерфейс, с которым может работать клиент.
+    /// </summary>
+    interface ITarget
     {
-        double GetRadius();
+        string GetRequest();
     }
 
-    class RoundHole
+    /// <summary>
+    /// EN: The Adaptee contains some useful behavior, but its interface is incompatible
+    /// with the existing client code.The Adaptee needs some adaptation before the client code can use it.
+    /// 
+    /// RU: Класс Adaptee содержит полезные методы, но его интерфейс несовместим с тем, который
+    /// ожидается клиентом. Интерфейс Adaptee требует некоторой адаптации для того,
+    /// чтобы клиент мог его использовать.
+    /// </summary>
+    class Adaptee
     {
-        private readonly double _radius;
-
-        public RoundHole(double radius)
+        public string GetSpecificRequest()
         {
-            _radius = radius;
-        }
-
-        public double GetRadius()
-        {
-            return _radius;
-        }
-
-        public bool Fits(IRoundForm form)
-        {
-            return _radius >= form.GetRadius();
-        }
-    }
-
-    class RoundPeg : IRoundForm
-    {
-        private readonly double _radius;
-
-        public RoundPeg(double radius)
-        {
-            _radius = radius;
-        }
-
-        public double GetRadius()
-        {
-            return _radius;
-        }
-    }
-
-    class SquarePeg
-    {
-        private readonly double _width;
-
-        public SquarePeg(double width)
-        {
-            _width = width;
-        }
-
-        public double GetWidth()
-        {
-            return _width;
-        }
-
-        public double GetSquare()
-        {
-            return Math.Pow(_width, 2);
+            return "Specific request.";
         }
     }
 
-    class SquarePegAdapter : IRoundForm
+    /// <summary>
+    /// EN: The Adapter makes the Adaptee's interface compatible with the ITarget interface. 
+    /// 
+    /// RU: Адаптер позволяет привести интерфейс Adaptee к ожидаемому клиентом интерфейсу ITarget.
+    /// </summary>
+    class Adapter : ITarget
     {
-        private readonly SquarePeg _peg;
+        private readonly Adaptee _adaptee;
 
-        public SquarePegAdapter(SquarePeg peg)
+        public Adapter(Adaptee adaptee)
         {
-            _peg = peg;
+            _adaptee = adaptee;
         }
 
-        public double GetRadius()
+        public string GetRequest()
         {
-            return Math.Sqrt(Math.Pow(_peg.GetWidth() / 2, 2) * 2);
+            return $"This is '{_adaptee.GetSpecificRequest()}'";
         }
     }
 
@@ -81,30 +65,14 @@ namespace RefactoringGuru.DesignPatterns.Adapter.Structural
     {
         public void Main()
         {
-            RoundHole hole = new RoundHole(5);
-            RoundPeg rpeg = new RoundPeg(5);
+            Adaptee adaptee = new Adaptee();
 
-            if (hole.Fits(rpeg))
-            {
-                Console.WriteLine("Round peg r5 fits round hole r5.");
-            }
+            ITarget target = new Adapter(adaptee);
 
-            SquarePeg smallSqPeg = new SquarePeg(2);
-            SquarePeg largeSqPeg = new SquarePeg(20);
-            // hole.fits(smallSqPeg); // not compiled
+            Console.WriteLine("Adaptee interface is incompatible with the client.");
+            Console.WriteLine("But with adapter client can call it's method.");
 
-            SquarePegAdapter smallSqPegAdapter = new SquarePegAdapter(smallSqPeg);
-            SquarePegAdapter largeSqPegAdapter = new SquarePegAdapter(largeSqPeg);
-
-            if (hole.Fits(smallSqPegAdapter))
-            {
-                Console.WriteLine("Square peg w2 fits round hole r5.");
-            }
-
-            if (!hole.Fits(largeSqPegAdapter))
-            {
-                Console.WriteLine("Square peg w20 does not fit into round hole r5.");
-            }
+            Console.WriteLine(target.GetRequest());
         }
     }
 
