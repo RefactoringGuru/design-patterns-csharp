@@ -9,7 +9,7 @@ It contains C# examples for all classic GoF design patterns. Each pattern includ
 
 ## Status & Roadmap
 
-This repository is in the very initial state at the monent.
+This repository is in the very initial state at the monent. Missing examples:
 
 - [ ] Factory-method: RealWorld
 - [ ] Abstract-factory: RealWorld
