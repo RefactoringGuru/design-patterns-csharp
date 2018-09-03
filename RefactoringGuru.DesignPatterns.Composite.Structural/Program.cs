@@ -85,7 +85,7 @@ namespace RefactoringGuru.DesignPatterns.Composite.Structural
 
         public override bool IsComposite()
         {
-            throw new NotImplementedException();
+            return false;
         }
     }
 	
