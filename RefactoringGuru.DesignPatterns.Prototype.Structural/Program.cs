@@ -24,8 +24,9 @@ namespace RefactoringGuru.DesignPatterns.Prototype.Structural
             prototype.Component = new DateTime();
             prototype.CircularReference = new ComponentWithBackReference(prototype);
 
-            Prototype prototype2 = prototype.Clone();
-            if(prototype.Primitive == prototype2.Primitive)
+            Prototype clone = prototype.Clone();
+
+            if(prototype.Primitive == clone.Primitive)
             {
                 Console.Write("Primitive field values have been carried over to a clone. Yay!\n");
             }
@@ -34,7 +35,7 @@ namespace RefactoringGuru.DesignPatterns.Prototype.Structural
                 Console.Write("Primitive field values have not been copied. Booo!\n");
             }
 
-            if (prototype.Component == prototype2.Component)
+            if (prototype.Component != clone.Component)
             {
                 Console.Write("Simple component has been cloned. Yay!\n");
             }
@@ -43,7 +44,7 @@ namespace RefactoringGuru.DesignPatterns.Prototype.Structural
                 Console.Write("Simple component has not been cloned. Booo!\n");
             }
 
-            if (prototype.CircularReference == prototype2.CircularReference)
+            if (prototype.CircularReference != clone.CircularReference)
             {
                 Console.Write("Component with back reference has been cloned. Yay!\n");
             }
@@ -52,9 +53,9 @@ namespace RefactoringGuru.DesignPatterns.Prototype.Structural
                 Console.Write("Component with back reference has not been cloned. Booo!\n");
             }
 
-            if (prototype.CircularReference.Prototype == prototype2.CircularReference.Prototype)
+            if (clone.CircularReference.Prototype != prototype)
             {
-                Console.Write("Component with back reference is linked to the clone. Yay!\n");
+                Console.Write("Component with back reference is not linked to original object. Yay!\n");
             }
             else
             {
@@ -76,7 +77,14 @@ namespace RefactoringGuru.DesignPatterns.Prototype.Structural
         
         public Prototype Clone()
         {
-            return CircularReference.Prototype;
+            Prototype clone = this.MemberwiseClone() as Prototype;
+
+            clone.Component = this.Component.MemberwiseClone() as DateTime;
+
+            clone.CircularReference = this.CircularReference.MemberwiseClone() as ComponentWithBackReference;
+            clone.CircularReference.Prototype = this;
+
+            return clone;
         }
     }
 
