@@ -1,8 +1,0 @@
-Client: I get a simple component:
-RESULT: LEAF
-
-Client: Now I get a composite tree:
-RESULT: Branch(Branch(LEAF+LEAF)+Branch(LEAF))
-
-Client: I can merge two components without checking their classes:
-RESULT: Branch(Branch(LEAF+LEAF)+Branch(LEAF)+LEAF)

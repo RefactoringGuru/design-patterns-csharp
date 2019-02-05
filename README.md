@@ -4,12 +4,12 @@ This repository is part of the [Refactoring.Guru](https://refactoring.guru/desig
 
 It contains C# examples for all classic GoF design patterns. Each pattern includes two examples:
 
-- **Structural** examples show the internal structure of patterns with detailed comments.
+- **Conceptual** examples show the internal structure of patterns with detailed comments.
 - **RealWold** examples show how the patterns can be used in a real-world C# application.
 
 ## Status & Roadmap
 
-This repository is in the very initial state at the monent. Missing examples:
+This repository is in the very initial state at the moment. Here are the missing examples:
 
 - [ ] Factory-method: RealWorld
 - [ ] Abstract-factory: RealWorld
@@ -56,11 +56,13 @@ Here's a style guide which might help you to keep your changes consistent with o
 
 2. Try to hard wrap the code at 80th's character. It helps to list the code on the website without scrollbars.
 
-3. The actual examples should be represented by projects with the following naming convention: RefactoringGuru.DesignPatterns.{PatternName}.{ExampleName}.
+3. The actual examples should be represented by projects with the following naming convention: {PatternName}.{ExampleName}.
 
-4. Aim to put all code within one file. We realize that it's not how it supposed to be done in production. But it helps people to better understand examples, since all code fits into one screen.
+4. The code should have the following namespace: RefactoringGuru.DesignPatterns.{PatternName}.{ExampleName}.
 
-5. Comments may or may not have language tags in them, such as this:
+5. Aim to put all code within one file. We realize that it's not how it supposed to be done in production. But it helps people to better understand examples, since all code fits into one screen.
+
+6. Comments may or may not have language tags in them, such as this:
 
     ```csharp
      /// <summary>

@@ -1,5 +1,0 @@
-Client: I get a sumple component:
-RESULT: ConcreteComponent
-
-Client: Now I get a decorated component:
-RESULT: ConcreteDecoratorB(ConcreteDecoratorA(ConcreteComponent))
