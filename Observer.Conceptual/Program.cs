@@ -4,37 +4,37 @@ using System.Threading;
 
 namespace RefactoringGuru.DesignPatterns.Observer.Conceptual
 {
-    public interface SplObserver
+    public interface IObserver
     {
-        void update(SplSubject subject);
+        void update(ISubject subject);
     }
 
-    public interface SplSubject
+    public interface ISubject
     {
-        void attach(SplObserver observer);
+        void attach(IObserver observer);
 
-        void detach(SplObserver observer);
+        void detach(IObserver observer);
 
         void notify();
     }
 
-    public class Subject : SplSubject
+    public class Subject : ISubject
     {
         public int State { get; set; } = -0;
 
-        private List<SplObserver> _observers = new List<SplObserver>();
+        private List<IObserver> _observers = new List<IObserver>();
 
-        public void attach(SplObserver observer)
+        public void attach(IObserver observer)
         {
             Console.Write("Subject: Attached an observer.\n");
             this._observers.Add(observer);
         }
 
-        public void detach(SplObserver observer)
+        public void detach(IObserver observer)
         {
-            foreach(var elem in _observers)
+            foreach (var elem in _observers)
             {
-                if(elem == observer)
+                if (elem == observer)
                 {
                     _observers.Remove(observer);
                     Console.Write("Subject: Detached an observer.\n");
@@ -47,7 +47,7 @@ namespace RefactoringGuru.DesignPatterns.Observer.Conceptual
         {
             Console.Write("Subject: Notifying observers...\n");
 
-            foreach(var observer in _observers)
+            foreach (var observer in _observers)
             {
                 observer.update(this);
             }
@@ -65,25 +65,25 @@ namespace RefactoringGuru.DesignPatterns.Observer.Conceptual
         }
     }
 
-    class ConcreteObserverA : SplObserver
+    class ConcreteObserverA : IObserver
     {
-        public void update(SplSubject subject)
+        public void update(ISubject subject)
         {
-            if(!(subject is Subject))
+            if (!(subject is Subject))
             {
                 return;
             }
             
-            if((subject as Subject).State < 3)
+            if ((subject as Subject).State < 3)
             {
                 Console.Write("ConcreteObserverA: Reacted to the event.\n");
             }
         }
     }
 
-    class ConcreteObserverB : SplObserver
+    class ConcreteObserverB : IObserver
     {
-        public void update(SplSubject subject)
+        public void update(ISubject subject)
         {
             if (!(subject is Subject))
             {

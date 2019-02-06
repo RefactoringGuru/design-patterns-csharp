@@ -71,7 +71,7 @@ namespace RefactoringGuru.DesignPatterns.Visitor.Conceptual
     {
         internal static void ClientCode(List<Component> components, Visitor visitor)
         {
-            foreach(var component in components)
+            foreach (var component in components)
             {
                 component.accept(visitor);
             }

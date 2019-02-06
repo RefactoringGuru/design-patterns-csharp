@@ -26,7 +26,7 @@ namespace RefactoringGuru.DesignPatterns.Strategy.Conceptual
             var result = this._strategy.doAlgorithm(new List<string> { "a", "b", "c", "d", "e" });
 
             string result_str = string.Empty;
-            foreach(var element in result as List<string>)
+            foreach (var element in result as List<string>)
             {
                 result_str += element + ",";
             }

@@ -42,7 +42,7 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
             elements.Add(key.Color);
             elements.Add(key.Company);
 
-            if(key.Owner != null && key.Number != null)
+            if (key.Owner != null && key.Number != null)
             {
                 elements.Add(key.Number);
                 elements.Add(key.Owner);
@@ -114,34 +114,30 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
 
         public void ClientCode()
         {
-            var factory = new FlyweightFactory
-                (
-                    new Car { Company = "Chevrolet", Model = "Camaro2018", Color = "pink" },
-                    new Car { Company = "Mercedes Benz", Model = "C300", Color = "black" },
-                    new Car { Company = "Mercedes Benz", Model = "C500", Color = "red" },
-                    new Car { Company = "BMW", Model = "M5", Color = "red" },
-                    new Car { Company = "BMW", Model = "X6", Color = "white" }
-                );
+            var factory = new FlyweightFactory(
+                new Car { Company = "Chevrolet", Model = "Camaro2018", Color = "pink" },
+                new Car { Company = "Mercedes Benz", Model = "C300", Color = "black" },
+                new Car { Company = "Mercedes Benz", Model = "C500", Color = "red" },
+                new Car { Company = "BMW", Model = "M5", Color = "red" },
+                new Car { Company = "BMW", Model = "X6", Color = "white" }
+            );
             factory.listFlyweights();
 
-            addCarToPoliceDatabase(factory, 
-                new Car { Number = "CL234IR",
-                          Owner = "James Doe",
-                          Company = "BMW",
-                          Model = "M5",
-                          Color = "red"
-                        });
+            addCarToPoliceDatabase(factory,  new Car {
+                Number = "CL234IR",
+                Owner = "James Doe",
+                Company = "BMW",
+                Model = "M5",
+                Color = "red"
+            });
 
-
-            addCarToPoliceDatabase(factory,
-                new Car
-                {
-                    Number = "CL234IR",
-                    Owner = "James Doe",
-                    Company = "BMW",
-                    Model = "X1",
-                    Color = "red"
-                });
+            addCarToPoliceDatabase(factory, new Car {
+                Number = "CL234IR",
+                Owner = "James Doe",
+                Company = "BMW",
+                Model = "X1",
+                Color = "red"
+            });
 
             factory.listFlyweights();
         }

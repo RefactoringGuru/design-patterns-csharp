@@ -21,8 +21,8 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
         List<Component> children = new List<Component>();
 
         public Composite() 
-		{ 
-		
+		{
+
 		}
 
         public override void Add(Component component)
@@ -48,7 +48,7 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
             foreach (Component component in children)
             {
                 component.Operation();
-                if(i != children.Count-1)
+                if (i != children.Count-1)
 				{
 					Console.Write("+");
 				}
@@ -124,7 +124,7 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
 
         public void ClientCode2(Component component1, Component component2)
         {
-            if(component1.IsComposite())
+            if (component1.IsComposite())
             {
                 component1.Add(component2);
             }

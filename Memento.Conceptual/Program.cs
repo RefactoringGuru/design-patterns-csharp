@@ -47,7 +47,7 @@ namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
 
         public void restore(Memento memento)
         {
-            if(!(memento is ConcreteMemento))
+            if (!(memento is ConcreteMemento))
             {
                 throw new Exception("Unknown memento class " + memento.ToString());
             }

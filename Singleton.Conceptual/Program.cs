@@ -18,7 +18,7 @@ namespace Singleton
             Singleton s1 = Singleton.getInstance();
             Singleton s2 = Singleton.getInstance();
 
-            if(s1 == s2)
+            if (s1 == s2)
             {
                 Console.WriteLine("Singleton works, both variables contain the same instance.");
             }

@@ -23,12 +23,12 @@ namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
 
         public void notify(object sender, string ev)
         {
-            if(ev == "A")
+            if (ev == "A")
             {
                 Console.Write("Mediator reacts on A and triggers folowing operations:\n");
                 this.component2.doC();
             }
-            if(ev == "D")
+            if (ev == "D")
             {
                 Console.Write("Mediator reacts on D and triggers following operations:\n");
                 this.component1.doB();

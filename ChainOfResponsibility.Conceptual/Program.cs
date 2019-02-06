@@ -37,7 +37,7 @@ namespace RefactoringGuru.DesignPatterns.ChainOfResponsibility.Conceptual
     {
         public override object Handle(object request)
         {
-            if((request as string) == "Banana")
+            if ((request as string) == "Banana")
             {
                 return "Monkey: I'll eat the " + request.ToString() + ".\n";
             }
@@ -82,7 +82,7 @@ namespace RefactoringGuru.DesignPatterns.ChainOfResponsibility.Conceptual
     {
         public static void ClientCode(AbstractHandler handler)
         {
-            foreach(var food in new List<string> { "Nut", "Banana", "Cup of coffee" })
+            foreach (var food in new List<string> { "Nut", "Banana", "Cup of coffee" })
             {
                 Console.WriteLine("Client: Who wants a " + food + "?");
 
