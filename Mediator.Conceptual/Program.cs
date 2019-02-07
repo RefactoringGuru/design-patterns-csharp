@@ -1,96 +1,124 @@
-﻿using System;
+﻿// EN: Mediator Design Pattern
+//
+// Intent: Define an object that encapsulates how a set of objects interact.
+// Mediator promotes loose coupling by keeping objects from referring to each
+// other explicitly, and it lets you vary their interaction independently.
+//
+// RU: Паттерн Посредник
+//
+// Назначение: Определяет объект, который инкапсулирует взаимодействие набора
+// объектов. Посредник способствует слабой связанности, удерживая объекты от
+// обращения друг к другу напрямую, и это позволяет вам менять их взаимодействие
+// независимо.
+
+using System;
 
 namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
 {
+    // EN: The Mediator interface declares a method used by components to notify the
+    // mediator about various eventents. The Mediator may react to these eventents and
+    // pass the execution to other components.
+    //
+    // RU: Интерфейс Посредника предоставляет метод, используемый компонентами для
+    // уведомления посредника о различных событиях. Посредник может реагировать на
+    // эти события  и передавать исполнение другим компонентам.
     interface Mediator
     {
-        void notify(object sender, string ev);
+        void Notify(object sender, string ev);
     }
 
+    // EN: Concrete Mediators implement cooperative behavior by coordinating several
+    // components.
+    //
+    // RU: Конкретные Посредники реализуют совместное поведение, координируя
+    // отдельные компоненты.
     class ConcreteMediator : Mediator
     {
-        private Component1 component1;
+        private Component1 _component1;
 
-        private Component2 component2;
+        private Component2 _component2;
 
         public ConcreteMediator(Component1 component1, Component2 component2)
         {
-            this.component1 = component1;
-            this.component1.setMediator(this);
-            this.component2 = component2;
-            this.component2.setMediator(this);
+            this._component1 = component1;
+            this._component1.SetMediator(this);
+            this._component2 = component2;
+            this._component2.SetMediator(this);
         } 
 
-        public void notify(object sender, string ev)
+        public void Notify(object sender, string ev)
         {
             if (ev == "A")
             {
-                Console.Write("Mediator reacts on A and triggers folowing operations:\n");
-                this.component2.doC();
+                Console.WriteLine("Mediator reacts on A and triggers folowing operations:");
+                this._component2.DoC();
             }
             if (ev == "D")
             {
-                Console.Write("Mediator reacts on D and triggers following operations:\n");
-                this.component1.doB();
-                this.component2.doC();
+                Console.WriteLine("Mediator reacts on D and triggers following operations:");
+                this._component1.DoB();
+                this._component2.DoC();
             }
         }
     }
 
+    // EN: The Base Component provides the basic functionality of storing a
+    // mediator's instance inside component objects.
+    //
+    // RU: Базовый Компонент обеспечивает базовую функциональность хранения
+    // экземпляра посредника внутри объектов компонентов.
     class BaseComponent
     {
-        protected Mediator mediator;
+        protected Mediator _mediator;
 
         public BaseComponent(Mediator mediator = null)
         {
-            this.mediator = mediator;
+            this._mediator = mediator;
         }
 
-        public void setMediator(Mediator mediator)
+        public void SetMediator(Mediator mediator)
         {
-            this.mediator = mediator;
+            this._mediator = mediator;
         }
     }
 
+    // EN: Concrete Components implement various functionality. They don't depend on
+    // other components. They also don't depend on any concrete mediator classes.
+    //
+    // RU: Конкретные Компоненты реализуют различную функциональность. Они не
+    // зависят от других компонентов. Они также не зависят от каких-либо конкретных
+    // классов посредников.
     class Component1 : BaseComponent
     {
-        public void doA()
+        public void DoA()
         {
-            Console.Write("Component 1 does A.\n");
+            Console.WriteLine("Component 1 does A.");
 
-            this.mediator.notify(this, "A");
+            this._mediator.Notify(this, "A");
         }
 
-        public void doB()
+        public void DoB()
         {
-            Console.Write("Component 1 does B.\n");
+            Console.WriteLine("Component 1 does B.");
 
-            this.mediator.notify(this, "B");
+            this._mediator.Notify(this, "B");
         }
     }
 
     class Component2 : BaseComponent
     {
-        public void doC()
+        public void DoC()
         {
-            Console.Write("Component 2 does C.\n");
+            Console.WriteLine("Component 2 does C.");
 
-            this.mediator.notify(this, "C");
+            this._mediator.Notify(this, "C");
         }
 
-        public void doD()
+        public void DoD()
         {
-            Console.Write("Component 2 does D.\n");
+            Console.WriteLine("Component 2 does D.");
 
-            this.mediator.notify(this, "D");
-        }
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Client.ClientCode();
+            this._mediator.Notify(this, "D");
         }
     }
 
@@ -98,17 +126,28 @@ namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
     {
         public static void ClientCode()
         {
+            // EN: The client code.
+            //
+            // RU: Клиентский код.
             Component1 component1 = new Component1();
             Component2 component2 = new Component2();
-            Mediator mediator = new ConcreteMediator(component1, component2);
+            new ConcreteMediator(component1, component2);
 
             Console.Write("Client triggets operation A.\n");
-            component1.doA();
+            component1.DoA();
 
             Console.WriteLine();
 
             Console.Write("Client triggers operation D.\n");
-            component2.doD();
+            component2.DoD();
+        }
+    }
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Client.ClientCode();
         }
     }
 }
