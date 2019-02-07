@@ -1,8 +1,8 @@
 Client: I get a simple component:
-RESULT: LEAF
+RESULT: Leaf
 
-Client: Now I get a composite tree:
-RESULT: Branch(Branch(LEAF+LEAF)+Branch(LEAF))
+Client: Now I've got a composite tree:
+RESULT: Branch(Branch(Leaf+Leaf)+Branch(Leaf))
 
-Client: I can merge two components without checking their classes:
-RESULT: Branch(Branch(LEAF+LEAF)+Branch(LEAF)+LEAF)
+Client: I don't need to check the components classes even when managing the tree:
+RESULT: Branch(Branch(Leaf+Leaf)+Branch(Leaf)+Leaf)
