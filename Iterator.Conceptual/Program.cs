@@ -1,67 +1,68 @@
-﻿using System;
+﻿// EN: Iterator Design Pattern
+//
+// Intent: Provide a way to traverse the elements of an aggregate object without
+// exposing its underlying representation.
+//
+// RU: Паттерн Итератор
+//
+// Назначение: Предоставляет возможность обходить элементы составного объекта,
+// не раскрывая его внутреннего представления.
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace RefactoringGuru.DesignPatterns.Iterator.Conceptual
 {
-    class Program
-    {
-        public static void Main()
-        {
-            Client client = new Client();
-            client.ClientCode();
-        }
-    }
-
-    public class Client
-    {
-        public void ClientCode()
-        {
-            var collection = new WordsCollection();
-            collection.AddItem("First");
-            collection.AddItem("Second");
-            collection.AddItem("Third");
-
-            Console.WriteLine("Straight traversal:");
-
-            foreach (var element in collection)
-            {
-                Console.WriteLine(element);
-            }
-
-            Console.WriteLine("\nReverse traversal:");
-
-            collection.ReverseDirection();
-
-            foreach (var element in collection)
-            {
-                Console.WriteLine(element);
-            }
-        }
-    }
-
     abstract class Iterator : IEnumerator
     {
         object IEnumerator.Current => Current();
 
+        // EN: Returns the key of the current element
+        //
+        // RU: Возвращает ключ текущего элемента
         public abstract int Key();
 		
+        // EN: Returns the current element
+        //
+        // RU: Возвращает текущий элемент.
         public abstract object Current();
 		
+        // EN: Move forward to next element
+        //
+        // RU: Переходит к следующему элементу.
         public abstract bool MoveNext();
 		
+        // EN: Rewinds the Iterator to the first element
+        //
+        // RU: Перематывает Итератор к первому элементу.
         public abstract void Reset();
     }
 
     abstract class IteratorAggregate : IEnumerable
     {
+        // EN: Returns an Iterator or another IteratorAggregate for the implementing object.
+        //
+        // RU: Возвращает Iterator или другой IteratorAggregate для реализующего объекта.
         public abstract IEnumerator GetEnumerator();
     }
 
+    // EN: Concrete Iterators implement various traversal algorithms. These classes
+    // store the current traversal position at all times.
+    //
+    // RU: Конкретные Итераторы реализуют различные алгоритмы обхода. Эти классы
+    // постоянно хранят текущее положение обхода.
     class AlphabeticalOrderIterator : Iterator
     {
         private WordsCollection _collection;
 		
+        // EN: Stores the current traversal position. An iterator may have
+        // a lot of other fields for storing iteration state, especially when it is
+        // supposed to work with a particular kind of collection.
+        //
+        // RU: Хранит текущее положение обхода. У итератора может быть
+        // множество других полей для хранения состояния итерации, особенно когда он
+        // должен работать с определённым типом коллекции.
         private int _position = -1;
 		
         private bool _reverse = false;
@@ -100,7 +101,6 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Conceptual
             {
                 return false;
             }
-            
         }
 		
         public override void Reset()
@@ -109,6 +109,11 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Conceptual
         }
     }
 
+    // EN: Concrete Collections provide one or several methods for retrieving fresh
+    // iterator instances, compatible with the collection class.
+    //
+    // RU: Конкретные Коллекции предоставляют один или несколько методов для
+    // получения новых экземпляров итератора, совместимых с классом коллекции.
     class WordsCollection : IteratorAggregate
     {
         List<string> _collection = new List<string>();
@@ -133,6 +138,49 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Conceptual
         public override IEnumerator GetEnumerator()
         {
             return new AlphabeticalOrderIterator(this, _direction);
+        }
+    }
+
+    public class Client
+    {
+        public void ClientCode()
+        {
+            // EN: The client code may or may not know about the Concrete Iterator or
+            // Collection classes, depending on the level of indirection you want to keep in
+            // your program.
+            //
+            // RU: Клиентский код может знать или не знать о Конкретном Итераторе или
+            // классах Коллекций, в зависимости от уровня косвенности, который вы хотите
+            // сохранить в своей программе.
+            var collection = new WordsCollection();
+            collection.AddItem("First");
+            collection.AddItem("Second");
+            collection.AddItem("Third");
+
+            Console.WriteLine("Straight traversal:");
+
+            foreach (var element in collection)
+            {
+                Console.WriteLine(element);
+            }
+
+            Console.WriteLine("\nReverse traversal:");
+
+            collection.ReverseDirection();
+
+            foreach (var element in collection)
+            {
+                Console.WriteLine(element);
+            }
+        }
+    }
+    
+    class Program
+    {
+        public static void Main()
+        {
+            Client client = new Client();
+            client.ClientCode();
         }
     }
 }
