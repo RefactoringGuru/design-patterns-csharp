@@ -1,10 +1,34 @@
-﻿using System;
+﻿// EN: Flyweight Design Pattern
+//
+// Intent: Use sharing to fit more objects into the available amount of RAM by
+// sharing common parts of the object state among multiple objects, instead of
+// keeping the entire state in each object.
+//
+// RU: Паттерн Легковес
+//
+// Назначение: Позволяет вместить бóльшее количество объектов в отведённую
+// оперативную память. Легковес экономит память, разделяя общее состояние
+// объектов между ними, вместо хранения  одинаковых данных в каждом объекте.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
+// EN: Use Json.NET library, you can download it from NuGet Package Manager
+//
+// RU: Используем библиотеку Json.NET, загрузить можно через NuGet Package Manager
 using Newtonsoft.Json;
 
 namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
 {
+    // EN: The Flyweight stores a common portion of the state (also called
+    // intrinsic state) that belongs to multiple real business entities. The
+    // Flyweight accepts the rest of the state (extrinsic state, unique for each
+    // entity) via its method parameters.
+    //
+    // RU: Легковес хранит общую часть состояния (также называемую внутренним
+    // состоянием), которая принадлежит нескольким реальным бизнес-объектам.
+    // Легковес принимает оставшуюся часть состояния (внешнее состояние,
+    // уникальное для каждого объекта) через его параметры метода.
     public class Flyweight
     {
         private Car _sharedState;
@@ -22,6 +46,15 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
         }
     }
 
+    // EN: The Flyweight Factory creates and manages the Flyweight objects. It
+    // ensures that flyweights are shared correctly. When the client requests a
+    // flyweight, the factory either returns an existing instance or creates a
+    // new one, if it doesn't exist yet.
+    //
+    // RU: Фабрика Легковесов создает объекты-Легковесы и управляет ими. Она
+    // обеспечивает правильное разделение легковесов. Когда клиент запрашивает
+    // легковес, фабрика либо возвращает существующий экземпляр, либо создает
+    // новый, если он ещё не существует.
     public class FlyweightFactory
     {
         private List<Tuple<Flyweight, string>> flyweights = new List<Tuple<Flyweight, string>>();
@@ -34,6 +67,9 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
             }
         }
 
+        // EN: Returns a Flyweight's string hash for a given state.
+        //
+        // RU: Возвращает хеш строки Легковеса для данного состояния.
         public string getKey(Car key)
         {
             List<string> elements = new List<string>();
@@ -53,6 +89,11 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
             return string.Join("_", elements);
         }
 
+        // EN: Returns an existing Flyweight with a given state or creates a new
+        // one.
+        //
+        // RU: Возвращает существующий Легковес с заданным состоянием или создает
+        // новый.
         public Flyweight GetFlyweight(Car sharedState)
         {
             string key = this.getKey(sharedState);
@@ -93,27 +134,33 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
         public string Color { get; set; }
     }
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Client client = new Client();
-            client.ClientCode();
-        }
-    }
-
     public class Client
     {
         public void addCarToPoliceDatabase(FlyweightFactory factory, Car car)
         {
             Console.Write("\nClient: Adding a car to database.\n");
 
-            var flyweight = factory.GetFlyweight(new Car { Color = car.Color, Model = car.Model, Company = car.Company });
+            var flyweight = factory.GetFlyweight(new Car {
+                Color = car.Color,
+                Model = car.Model,
+                Company = car.Company
+            });
+            
+            // EN: The client code either stores or calculates extrinsic state and
+            // passes it to the flyweight's methods.
+            //
+            // RU: Клиентский код либо сохраняет, либо вычисляет внешнее состояние и
+            // передает его методам легковеса.
             flyweight.Operation(car);
         }
 
         public void ClientCode()
         {
+            // EN: The client code usually creates a bunch of pre-populated flyweights in
+            // the initialization stage of the application.
+            //
+            // RU: Клиентский код обычно создает кучу предварительно заполненных легковесов
+            // на этапе инициализации приложения.
             var factory = new FlyweightFactory(
                 new Car { Company = "Chevrolet", Model = "Camaro2018", Color = "pink" },
                 new Car { Company = "Mercedes Benz", Model = "C300", Color = "black" },
@@ -123,7 +170,7 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
             );
             factory.listFlyweights();
 
-            addCarToPoliceDatabase(factory,  new Car {
+            addCarToPoliceDatabase(factory, new Car {
                 Number = "CL234IR",
                 Owner = "James Doe",
                 Company = "BMW",
@@ -140,6 +187,15 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
             });
 
             factory.listFlyweights();
+        }
+    }
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Client client = new Client();
+            client.ClientCode();
         }
     }
 }
