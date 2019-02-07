@@ -24,7 +24,7 @@ namespace RefactoringGuru.DesignPatterns.AbstractFactory.Conceptual
     // темой или концепцией высокого уровня. Продукты одного семейства обычно могут
     // взаимодействовать между собой. Семейство продуктов может иметь несколько
     // вариаций,  но продукты одной вариации несовместимы с продуктами другой.
-    interface IAbstractFactory
+    public interface IAbstractFactory
     {
         IAbstractProductA CreateProductA();
 
@@ -74,7 +74,7 @@ namespace RefactoringGuru.DesignPatterns.AbstractFactory.Conceptual
     //
     // RU: Каждый отдельный продукт семейства продуктов должен иметь базовый
     // интерфейс. Все вариации продукта должны реализовывать этот интерфейс.
-    interface IAbstractProductA
+    public interface IAbstractProductA
     {
         string UsefulFunctionA();
     }
@@ -105,7 +105,7 @@ namespace RefactoringGuru.DesignPatterns.AbstractFactory.Conceptual
     // RU: Базовый интерфейс другого продукта. Все продукты могут взаимодействовать
     // друг с другом, но правильное взаимодействие возможно только между продуктами
     // одной и той же конкретной вариации.
-    interface IAbstractProductB
+    public interface IAbstractProductB
     {
         // EN: Product B is able to do its own thing...
         //

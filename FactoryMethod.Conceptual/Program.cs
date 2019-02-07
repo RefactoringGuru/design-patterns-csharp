@@ -94,7 +94,7 @@ namespace RefactoringGuru.DesignPatterns.FactoryMethod.Conceptual
     //
     // RU: Интерфейс Продукта объявляет операции, которые должны выполнять все
     // конкретные продукты.
-    interface IProduct
+    public interface IProduct
     {
         string Operation();
     }

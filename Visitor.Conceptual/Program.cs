@@ -19,9 +19,9 @@ namespace RefactoringGuru.DesignPatterns.Visitor.Conceptual
     //
     // RU: Интерфейс Компонента объявляет метод accept, который в качестве
     // аргумента может получать любой объект, реализующий интерфейс посетителя.
-    public interface Component
+    public interface IComponent
     {
-        void Accept(Visitor visitor);
+        void Accept(IVisitor visitor);
     }
 
     // EN: Each Concrete Component must implement the `Accept` method in such a
@@ -31,7 +31,7 @@ namespace RefactoringGuru.DesignPatterns.Visitor.Conceptual
     // RU: Каждый Конкретный Компонент должен реализовать метод Accept таким
     // образом, чтобы он вызывал метод посетителя, соответствующий классу
     // компонента.
-    public class ConcreteComponentA : Component
+    public class ConcreteComponentA : IComponent
     {
         // EN: Note that we're calling `VisitConcreteComponentA`, which matches
         // the current class name. This way we let the visitor know the class of
@@ -40,7 +40,7 @@ namespace RefactoringGuru.DesignPatterns.Visitor.Conceptual
         // RU: Обратите внимание, мы вызываем VisitConcreteComponentA, что
         // соответствует названию текущего класса. Таким образом мы позволяем
         // посетителю узнать, с каким классом компонента он работает.
-        public void Accept(Visitor visitor)
+        public void Accept(IVisitor visitor)
         {
             visitor.VisitConcreteComponentA(this);
         }
@@ -59,12 +59,12 @@ namespace RefactoringGuru.DesignPatterns.Visitor.Conceptual
         }
     }
 
-    public class ConcreteComponentB : Component
+    public class ConcreteComponentB : IComponent
     {
         // EN: Same here: VisitConcreteComponentB => ConcreteComponentB
         //
         // RU: То же самое здесь: VisitConcreteComponentB => ConcreteComponentB
-        public void Accept(Visitor visitor)
+        public void Accept(IVisitor visitor)
         {
             visitor.VisitConcreteComponentB(this);
         }
@@ -84,7 +84,7 @@ namespace RefactoringGuru.DesignPatterns.Visitor.Conceptual
     // соответствующих классам компонентов. Сигнатура метода посещения позволяет
     // посетителю определить конкретный класс компонента, с которым он имеет
     // дело.
-    public interface Visitor
+    public interface IVisitor
     {
         void VisitConcreteComponentA(ConcreteComponentA element);
 
@@ -109,7 +109,7 @@ namespace RefactoringGuru.DesignPatterns.Visitor.Conceptual
     // случае было бы полезно хранить некоторое промежуточное состояние
     // алгоритма при выполнении методов посетителя над различными объектами
     // структуры.
-    class ConcreteVisitor1 : Visitor
+    class ConcreteVisitor1 : IVisitor
     {
         public void VisitConcreteComponentA(ConcreteComponentA element)
         {
@@ -122,7 +122,7 @@ namespace RefactoringGuru.DesignPatterns.Visitor.Conceptual
         }
     }
 
-    class ConcreteVisitor2 : Visitor
+    class ConcreteVisitor2 : IVisitor
     {
         public void VisitConcreteComponentA(ConcreteComponentA element)
         {
@@ -146,7 +146,7 @@ namespace RefactoringGuru.DesignPatterns.Visitor.Conceptual
         // набором элементов, не выясняя их конкретных классов. Операция
         // принятия направляет вызов к соответствующей операции в объекте
         // посетителя.
-        public static void ClientCode(List<Component> components, Visitor visitor)
+        public static void ClientCode(List<IComponent> components, IVisitor visitor)
         {
             foreach (var component in components)
             {
@@ -159,7 +159,7 @@ namespace RefactoringGuru.DesignPatterns.Visitor.Conceptual
     {
         static void Main(string[] args)
         {
-            List<Component> components = new List<Component>
+            List<IComponent> components = new List<IComponent>
             {
                 new ConcreteComponentA(),
                 new ConcreteComponentB()

@@ -27,7 +27,7 @@ namespace RefactoringGuru.DesignPatterns.Strategy.Conceptual
         // RU: Контекст хранит ссылку на один из объектов Стратегии. Контекст не
         // знает конкретного класса стратегии. Он должен работать со всеми
         // стратегиями через интерфейс Стратегии.
-        private Strategy _strategy;
+        private IStrategy _strategy;
 
         public Context()
         { }
@@ -37,7 +37,7 @@ namespace RefactoringGuru.DesignPatterns.Strategy.Conceptual
         //
         // RU: Обычно Контекст принимает стратегию через конструктор, а также
         // предоставляет сеттер для её изменения во время выполнения.
-        public Context(Strategy strategy)
+        public Context(IStrategy strategy)
         {
             this._strategy = strategy;
         }
@@ -47,7 +47,7 @@ namespace RefactoringGuru.DesignPatterns.Strategy.Conceptual
         //
         // RU: Обычно Контекст позволяет заменить объект Стратегии во время
         // выполнения.
-        public void SetStrategy(Strategy strategy)
+        public void SetStrategy(IStrategy strategy)
         {
             this._strategy = strategy;
         }
@@ -85,7 +85,7 @@ namespace RefactoringGuru.DesignPatterns.Strategy.Conceptual
     //
     // Контекст использует этот интерфейс для вызова алгоритма, определённого
     // Конкретными Стратегиями.
-    interface Strategy
+    public interface IStrategy
     {
         object DoAlgorithm(object data);
     }
@@ -95,7 +95,7 @@ namespace RefactoringGuru.DesignPatterns.Strategy.Conceptual
     //
     // RU: Конкретные Стратегии реализуют алгоритм, следуя базовому интерфейсу
     // Стратегии. Этот интерфейс делает их взаимозаменяемыми в Контексте.
-    class ConcreteStrategyA : Strategy
+    class ConcreteStrategyA : IStrategy
     {
         public object DoAlgorithm(object data)
         {
@@ -106,7 +106,7 @@ namespace RefactoringGuru.DesignPatterns.Strategy.Conceptual
         }
     }
 
-    class ConcreteStrategyB : Strategy
+    class ConcreteStrategyB : IStrategy
     {
         public object DoAlgorithm(object data)
         {

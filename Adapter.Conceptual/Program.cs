@@ -18,7 +18,7 @@ namespace RefactoringGuru.DesignPatterns.Adapter.Conceptual
     //
     // RU: Целевой класс объявляет интерфейс, с которым может работать
     // клиентский код.
-    interface ITarget
+    public interface ITarget
     {
         string GetRequest();
     }

@@ -73,7 +73,7 @@ namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
         // EN: Saves the current state inside a memento.
         //
         // RU: Сохраняет текущее состояние внутри снимка.
-        public Memento Save()
+        public IMemento Save()
         {
             return new ConcreteMemento(this._state);
         }
@@ -81,7 +81,7 @@ namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
         // EN: Restores the Originator's state from a memento object.
         //
         // RU: Восстанавливает состояние Создателя из объекта снимка.
-        public void Restore(Memento memento)
+        public void Restore(IMemento memento)
         {
             if (!(memento is ConcreteMemento))
             {
@@ -100,7 +100,7 @@ namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
     // RU: Интерфейс Снимка предоставляет способ извлечения метаданных снимка,
     // таких как дата создания или название. Однако он не раскрывает состояние
     // Создателя.
-    interface Memento
+    public interface IMemento
     {
         string GetName();
 
@@ -114,7 +114,7 @@ namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
     //
     // RU: Конкретный снимок содержит инфраструктуру для хранения состояния
     // Создателя.
-    class ConcreteMemento : Memento
+    class ConcreteMemento : IMemento
     {
         private string _state;
 
@@ -161,7 +161,7 @@ namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
     // работает со всеми снимками через базовый интерфейс Снимка.
     class Caretaker
     {
-        private List<Memento> _mementos = new List<Memento>();
+        private List<IMemento> _mementos = new List<IMemento>();
 
         private Originator _originator = null;
 

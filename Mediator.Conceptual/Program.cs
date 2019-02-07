@@ -22,7 +22,7 @@ namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
     // RU: Интерфейс Посредника предоставляет метод, используемый компонентами
     // для уведомления посредника о различных событиях. Посредник может
     // реагировать на эти события  и передавать исполнение другим компонентам.
-    interface Mediator
+    public interface IMediator
     {
         void Notify(object sender, string ev);
     }
@@ -32,7 +32,7 @@ namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
     //
     // RU: Конкретные Посредники реализуют совместное поведение, координируя
     // отдельные компоненты.
-    class ConcreteMediator : Mediator
+    class ConcreteMediator : IMediator
     {
         private Component1 _component1;
 
@@ -69,14 +69,14 @@ namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
     // экземпляра посредника внутри объектов компонентов.
     class BaseComponent
     {
-        protected Mediator _mediator;
+        protected IMediator _mediator;
 
-        public BaseComponent(Mediator mediator = null)
+        public BaseComponent(IMediator mediator = null)
         {
             this._mediator = mediator;
         }
 
-        public void SetMediator(Mediator mediator)
+        public void SetMediator(IMediator mediator)
         {
             this._mediator = mediator;
         }

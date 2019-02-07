@@ -21,9 +21,9 @@ namespace RefactoringGuru.DesignPatterns.ChainOfResponsibility.Conceptual
     //
     // RU: Интерфейс Обработчика объявляет метод построения цепочки
     // обработчиков. Он также объявляет метод для выполнения запроса.
-    interface Handler
+    public interface IHandler
     {
-        Handler SetNext(Handler handler);
+        IHandler SetNext(IHandler handler);
 		
         object Handle(object request);
     }
@@ -33,11 +33,11 @@ namespace RefactoringGuru.DesignPatterns.ChainOfResponsibility.Conceptual
     //
     // RU: Поведение цепочки по умолчанию может быть реализовано внутри базового
     // класса обработчика.
-    abstract class AbstractHandler : Handler
+    abstract class AbstractHandler : IHandler
     {
-        private Handler _nextHandler;
+        private IHandler _nextHandler;
 
-        public Handler SetNext(Handler handler)
+        public IHandler SetNext(IHandler handler)
         {
             this._nextHandler = handler;
             

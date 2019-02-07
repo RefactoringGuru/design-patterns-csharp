@@ -34,9 +34,9 @@ namespace RefactoringGuru.DesignPatterns.Bridge.Conceptual
     // делегирует ему всю настоящую работу.
     class Abstraction
     {
-        protected Implementation _implementation;
+        protected IImplementation _implementation;
 		
-        public Abstraction(Implementation implementation)
+        public Abstraction(IImplementation implementation)
         {
             this._implementation = implementation;
         }
@@ -54,7 +54,7 @@ namespace RefactoringGuru.DesignPatterns.Bridge.Conceptual
     // RU: Можно расширить Абстракцию без изменения классов Реализации.
     class ExtendedAbstraction : Abstraction
     {
-        public ExtendedAbstraction(Implementation implementation) : base(implementation)
+        public ExtendedAbstraction(IImplementation implementation) : base(implementation)
         {
 		}
 		
@@ -74,9 +74,9 @@ namespace RefactoringGuru.DesignPatterns.Bridge.Conceptual
     // RU: Реализация устанавливает интерфейс для всех классов реализации. Он не
     // должен соответствовать интерфейсу Абстракции. На практике оба интерфейса
     // могут быть совершенно разными. Как правило, интерфейс Реализации
-    // предоставляет только примитивные операции,  в то время как Абстракция
+    // предоставляет только примитивные операции, в то время как Абстракция
     // определяет операции более высокого уровня, основанные на этих примитивах.
-    interface Implementation
+    public interface IImplementation
     {
         string OperationImplementation();
     }
@@ -84,9 +84,9 @@ namespace RefactoringGuru.DesignPatterns.Bridge.Conceptual
     // EN: Each Concrete Implementation corresponds to a specific platform and
     // implements the Implementation interface using that platform's API.
     //
-    // RU: Каждая Конкретная Реализация соответствует определённой платформе  и
+    // RU: Каждая Конкретная Реализация соответствует определённой платформе и
     // реализует интерфейс Реализации с использованием API этой платформы.
-    class ConcreteImplementationA : Implementation
+    class ConcreteImplementationA : IImplementation
     {
         public string OperationImplementation()
         {
@@ -94,7 +94,7 @@ namespace RefactoringGuru.DesignPatterns.Bridge.Conceptual
         }
     }
 
-    class ConcreteImplementationB : Implementation
+    class ConcreteImplementationB : IImplementation
     {
         public string OperationImplementation()
         {

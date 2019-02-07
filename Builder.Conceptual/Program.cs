@@ -19,7 +19,7 @@ namespace RefactoringGuru.DesignPatterns.Builder.Conceptual
     //
     // RU: Интерфейс Строителя объявляет создающие методы для различных частей
     // объектов Продуктов.
-    public interface Builder
+    public interface IBuilder
     {
         void BuildPartA();
 		
@@ -35,7 +35,7 @@ namespace RefactoringGuru.DesignPatterns.Builder.Conceptual
     // RU: Классы Конкретного Строителя следуют интерфейсу Строителя и
     // предоставляют конкретные реализации шагов построения. Ваша программа
     // может иметь несколько вариантов Строителей, реализованных по-разному.
-    public class ConcreteBuilder : Builder
+    public class ConcreteBuilder : IBuilder
     {
         private Product _product = new Product();
         
@@ -161,9 +161,9 @@ namespace RefactoringGuru.DesignPatterns.Builder.Conceptual
     // строителями.
     public class Director
     {
-        private Builder _builder;
+        private IBuilder _builder;
         
-        public Builder Builder
+        public IBuilder Builder
         {
             set { _builder = value; } 
         }

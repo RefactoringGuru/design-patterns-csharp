@@ -17,7 +17,7 @@ namespace RefactoringGuru.DesignPatterns.Command.Conceptual
     // EN: The Command interface declares a method for executing a command.
     //
     // RU: Интерфейс Команды объявляет метод для выполнения команд.
-    interface Command
+    public interface ICommand
     {
         void Execute();
     }
@@ -25,7 +25,7 @@ namespace RefactoringGuru.DesignPatterns.Command.Conceptual
     // EN: Some commands can implement simple operations on their own.
     //
     // RU: Некоторые команды способны выполнять простые операции самостоятельно.
-    class SimpleCommand : Command
+    class SimpleCommand : ICommand
     {
         private string _payload = string.Empty;
 
@@ -45,7 +45,7 @@ namespace RefactoringGuru.DesignPatterns.Command.Conceptual
     //
     // RU: Но есть и команды, которые делегируют более сложные операции другим
     // объектам, называемым «получателями».
-    class ComplexCommand : Command
+    class ComplexCommand : ICommand
     {
         private Receiver _receiver;
 
@@ -109,19 +109,19 @@ namespace RefactoringGuru.DesignPatterns.Command.Conceptual
     // команде.
     class Invoker
     {
-        private Command _onStart;
+        private ICommand _onStart;
 
-        private Command _onFinish;
+        private ICommand _onFinish;
 
         // EN: Initialize commands.
         //
         // RU: Инициализация команд
-        public void SetOnStart(Command command)
+        public void SetOnStart(ICommand command)
         {
             this._onStart = command;
         }
 
-        public void SetOnFinish(Command command)
+        public void SetOnFinish(ICommand command)
         {
             this._onFinish = command;
         }
@@ -135,7 +135,7 @@ namespace RefactoringGuru.DesignPatterns.Command.Conceptual
         public void DoSomethingImportant()
         {
             Console.WriteLine("Invoker: Does anybody want something done before I begin?");
-            if (this._onStart is Command)
+            if (this._onStart is ICommand)
             {
                 this._onStart.Execute();
             }
@@ -143,7 +143,7 @@ namespace RefactoringGuru.DesignPatterns.Command.Conceptual
             Console.WriteLine("Invoker: ...doing something really important...");
             
             Console.WriteLine("Invoker: Does anybody want something done after I finish?");
-            if (this._onFinish is Command)
+            if (this._onFinish is ICommand)
             {
                 this._onFinish.Execute();
             }

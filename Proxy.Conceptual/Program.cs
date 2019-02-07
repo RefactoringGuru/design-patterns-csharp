@@ -21,7 +21,7 @@ namespace RefactoringGuru.DesignPatterns.Proxy.Conceptual
     // Субъекта, так и для Заместителя. Пока клиент работает с Реальным
     // Субъектом, используя этот интерфейс, вы сможете передать ему заместителя
     // вместо реального субъекта.
-    public interface Subject
+    public interface ISubject
     {
         void Request();
     }
@@ -36,7 +36,7 @@ namespace RefactoringGuru.DesignPatterns.Proxy.Conceptual
     // которая к тому же может быть очень медленной или точной – например,
     // коррекция входных данных. Заместитель может решить эти задачи без
     // каких-либо изменений в коде Реального Субъекта.
-    class RealSubject : Subject
+    class RealSubject : ISubject
     {
         public void Request()
         {
@@ -47,7 +47,7 @@ namespace RefactoringGuru.DesignPatterns.Proxy.Conceptual
     // EN: The Proxy has an interface identical to the RealSubject.
     //
     // RU: Интерфейс Заместителя идентичен интерфейсу Реального Субъекта.
-    class Proxy : Subject
+    class Proxy : ISubject
     {
         private RealSubject _realSubject;
         
@@ -95,7 +95,7 @@ namespace RefactoringGuru.DesignPatterns.Proxy.Conceptual
     
     public class Client
     {
-        public void ClientCode(Subject subject)
+        public void ClientCode(ISubject subject)
         {
             subject.Request();
         }
