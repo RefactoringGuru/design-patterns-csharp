@@ -1,36 +1,66 @@
-﻿using System;
+﻿// EN: Memento Design Pattern
+//
+// Intent: Capture and externalize an object's internal state so that the object
+// can be restored to this state later, without violating encapsulation.
+//
+// RU: Паттерн Снимок
+//
+// Назначение: Фиксирует и восстанавливает внутреннее состояние объекта таким
+// образом, чтобы  в дальнейшем объект можно было восстановить в этом состоянии
+// без нарушения инкапсуляции.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
 namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
 {
+    // EN: The Originator holds some important state that may change over time.
+    // It also defines a method for saving the state inside a memento and
+    // another method for restoring the state from it.
+    //
+    // RU: Создатель содержит некоторое важное состояние, которое может со
+    // временем меняться. Он также объявляет метод сохранения состояния внутри
+    // снимка и метод восстановления состояния из него.
     class Originator
     {
-        string _state;
+        //
+        // EN: For the sake of simplicity, the originator's state is
+        // stored inside a single variable.
+        //
+        // RU: Для удобства состояние создателя хранится внутри одной
+        // переменной.
+        private string _state;
 
         public Originator(string state)
         {
             this._state = state;
-            Console.Write("Originator: My initial state is: " + _state + "\n");
+            Console.WriteLine("Originator: My initial state is: " + state);
         }
 
-        public void doSomething()
+        // EN: The Originator's business logic may affect its internal state.
+        // Therefore, the client should backup the state before launching
+        // methods of the business logic via the save() method.
+        //
+        // RU: Бизнес-логика Создателя может повлиять на его внутреннее
+        // состояние. Поэтому клиент должен выполнить резервное копирование
+        // состояния с помощью метода save перед запуском методов бизнес-логики.
+        public void DoSomething()
         {
-            Console.Write("Originator: I'm doing something important.\n");
-            this._state = this.generateRandomString(30);
-            Console.Write($"Originator: and my state has changed to: {_state}\n");
+            Console.WriteLine("Originator: I'm doing something important.");
+            this._state = this.GenerateRandomString(30);
+            Console.WriteLine($"Originator: and my state has changed to: {_state}");
         }
 
-        private string generateRandomString(int length = 10)
+        private string GenerateRandomString(int length = 10)
         {
-            string allowedSymbs = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
+            string allowedSymbols = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string result = string.Empty;
 
-            while(length > 0)
+            while (length > 0)
             {
-                result += allowedSymbs[new Random().Next(0, allowedSymbs.Length)];
+                result += allowedSymbols[new Random().Next(0, allowedSymbols.Length)];
 
                 Thread.Sleep(12);
 
@@ -40,32 +70,50 @@ namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
             return result;
         }
 
-        public Memento save()
+        // EN: Saves the current state inside a memento.
+        //
+        // RU: Сохраняет текущее состояние внутри снимка.
+        public Memento Save()
         {
             return new ConcreteMemento(this._state);
         }
 
-        public void restore(Memento memento)
+        // EN: Restores the Originator's state from a memento object.
+        //
+        // RU: Восстанавливает состояние Создателя из объекта снимка.
+        public void Restore(Memento memento)
         {
             if (!(memento is ConcreteMemento))
             {
                 throw new Exception("Unknown memento class " + memento.ToString());
             }
 
-            this._state = memento.getState();
+            this._state = memento.GetState();
             Console.Write($"Originator: My state has changed to: {_state}");
         }
     }
 
+    // EN: The Memento interface provides a way to retrieve the memento's
+    // metadata, such as creation date or name. However, it doesn't expose the
+    // Originator's state.
+    //
+    // RU: Интерфейс Снимка предоставляет способ извлечения метаданных снимка,
+    // таких как дата создания или название. Однако он не раскрывает состояние
+    // Создателя.
     interface Memento
     {
-        string getName();
+        string GetName();
 
-        string getState();
+        string GetState();
 
-        DateTime getDate();
+        DateTime GetDate();
     }
 
+    // EN: The Concrete Memento contains the infrastructure for storing the
+    // Originator's state.
+    //
+    // RU: Конкретный снимок содержит инфраструктуру для хранения состояния
+    // Создателя.
     class ConcreteMemento : Memento
     {
         private string _state;
@@ -78,77 +126,86 @@ namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
             this._date = DateTime.Now;
         }
 
-        public string getState()
+        // EN: The Originator uses this method when restoring its state.
+        //
+        // RU: Создатель использует этот метод, когда восстанавливает своё
+        // состояние.
+        public string GetState()
         {
             return this._state;
         }
-
-        public string getName()
+        
+        // EN: The rest of the methods are used by the Caretaker to display
+        // metadata.
+        //
+        // RU: Остальные методы используются Опекуном для отображения
+        // метаданных.
+        public string GetName()
         {
-            return this._date + " / (" + _state.Substring(0, 9) + "...)";
+            return $"{this._date} / ({this._state.Substring(0, 9)})...";
         }
 
-        public DateTime getDate()
+        public DateTime GetDate()
         {
             return this._date;
         }
     }
 
+    // EN: The Caretaker doesn't depend on the Concrete Memento class.
+    // Therefore, it doesn't have access to the originator's state, stored
+    // inside the memento. It works with all mementos via the base Memento
+    // interface.
+    //
+    // RU: Опекун не зависит от класса Конкретного Снимка. Таким образом, он не
+    // имеет доступа к состоянию создателя, хранящемуся внутри снимка. Он
+    // работает со всеми снимками через базовый интерфейс Снимка.
     class Caretaker
     {
         private List<Memento> _mementos = new List<Memento>();
 
-        private Originator originator = null;
+        private Originator _originator = null;
 
         public Caretaker(Originator originator)
         {
-            this.originator = originator;
+            this._originator = originator;
         }
 
-        public void backup()
+        public void Backup()
         {
-            Console.Write("\nCaretaker: Saving Originator's state...\n");
-            this._mementos.Add(this.originator.save());
+            Console.WriteLine("\nCaretaker: Saving Originator's state...");
+            this._mementos.Add(this._originator.Save());
         }
 
-        public void undo()
+        public void Undo()
         {
-            if (_mementos.Count == 0)
+            if (this._mementos.Count == 0)
             {
                 return;
             }
 
-            var memento = _mementos.Last();
-            _mementos.Remove(memento);
+            var memento = this._mementos.Last();
+            this._mementos.Remove(memento);
 
-            Console.Write("Caretaker: Restoring state to: " + memento.getName() + "\n");
+            Console.WriteLine("Caretaker: Restoring state to: " + memento.GetName());
 
             try
             {
-                this.originator.restore(memento);
+                this._originator.Restore(memento);
             }
-            catch(Exception)
+            catch (Exception)
             {
-                this.undo();
+                this.Undo();
             }
         }
 
-        public void showHistory()
+        public void ShowHistory()
         {
-            Console.Write("Caretaker: Here's the list of mementos:\n");
+            Console.WriteLine("Caretaker: Here's the list of mementos:");
 
-            foreach (var memento in _mementos)
+            foreach (var memento in this._mementos)
             {
-                Console.Write(memento.getName() + "\n");
+                Console.WriteLine(memento.GetName());
             }
-        }
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Client.ClientCode();
         }
     }
 
@@ -156,28 +213,39 @@ namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
     {
         public static void ClientCode()
         {
+            // EN: Client code.
+            //
+            // RU: Клиентский код.
             Originator originator = new Originator("Super-duper-super-puper-super.");
             Caretaker caretaker = new Caretaker(originator);
 
-            caretaker.backup();
-            originator.doSomething();
+            caretaker.Backup();
+            originator.DoSomething();
 
-            caretaker.backup();
-            originator.doSomething();
+            caretaker.Backup();
+            originator.DoSomething();
 
-            caretaker.backup();
-            originator.doSomething();
+            caretaker.Backup();
+            originator.DoSomething();
 
             Console.WriteLine();
-            caretaker.showHistory();
+            caretaker.ShowHistory();
 
             Console.Write("\nClient: Now, let's rollback!\n\n");
-            caretaker.undo();
+            caretaker.Undo();
 
             Console.Write("\n\nClient: Once more!\n\n");
-            caretaker.undo();
+            caretaker.Undo();
 
             Console.WriteLine();
+        }
+    }
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Client.ClientCode();
         }
     }
 }
