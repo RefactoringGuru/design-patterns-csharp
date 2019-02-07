@@ -1,4 +1,4 @@
-ExtendedAbstraction: Extended operation with:
+Abstract: Base operation with:
 ConcreteImplementationA: The result in platform A.
 
 ExtendedAbstraction: Extended operation with:
