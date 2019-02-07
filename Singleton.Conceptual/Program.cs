@@ -1,20 +1,56 @@
-﻿using System;
+﻿// EN: Singleton Design Pattern
+//
+// Intent: Ensure that a class has a single instance, and provide a global point
+// of access to it.
+//
+// RU: Паттерн Одиночка
+//
+// Назначение: Гарантирует существование единственного экземпляра класса и
+// предоставляет глобальную точку доступа к нему.
+
+using System;
 
 namespace Singleton
 {
-    class Program
+    // EN: The Singleton class defines the `getInstance` method that lets clients
+    // access the unique singleton instance.
+    //
+    // RU: Класс Одиночка предоставляет метод getInstance, который позволяет
+    // клиентам получить доступ к уникальному экземпляру одиночки.
+    class Singleton
     {
-        static void Main(string[] args)
+        private static Singleton _instance;
+
+        private static object _lock = new object();
+
+        private Singleton()
+        { }
+
+        // EN: The static method that controls the access to the singleton instance.
+        //
+        // This implementation let you subclass the Singleton class while keeping
+        // just one instance of each subclass around.
+        //
+        // RU: Статический метод, управляющий доступом к экземпляру одиночки.
+        //
+        // Эта реализация позволяет вам расширять класс Одиночки,
+        // сохраняя повсюду только один экземпляр каждого подкласса.
+        public static Singleton getInstance()
         {
-            Client client = new Client();
-            client.ClientCode();
+            lock (_lock)
+            {
+                return _instance ?? (_instance = new Singleton());
+            }
         }
     }
-
+    
     class Client
     {
         public void ClientCode()
         {
+            // EN: The client code.
+            //
+            // RU: Клиентский код.
             Singleton s1 = Singleton.getInstance();
             Singleton s2 = Singleton.getInstance();
 
@@ -29,24 +65,12 @@ namespace Singleton
         }
     }
 
-    class Singleton
+    class Program
     {
-        private static Singleton instance;
-
-        private static object obj = new object();
-
-        private Singleton()
-        { }
-
-        public static Singleton getInstance()
+        static void Main(string[] args)
         {
-            lock(obj)
-            {
-                if (instance == null)
-                    instance = new Singleton();
-            }
-
-            return instance;
+            Client client = new Client();
+            client.ClientCode();
         }
     }
 }
