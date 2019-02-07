@@ -41,14 +41,16 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Conceptual
 
     abstract class IteratorAggregate : IEnumerable
     {
-        // EN: Returns an Iterator or another IteratorAggregate for the implementing object.
+        // EN: Returns an Iterator or another IteratorAggregate for the
+        // implementing object.
         //
-        // RU: Возвращает Iterator или другой IteratorAggregate для реализующего объекта.
+        // RU: Возвращает Iterator или другой IteratorAggregate для реализующего
+        // объекта.
         public abstract IEnumerator GetEnumerator();
     }
 
-    // EN: Concrete Iterators implement various traversal algorithms. These classes
-    // store the current traversal position at all times.
+    // EN: Concrete Iterators implement various traversal algorithms. These
+    // classes store the current traversal position at all times.
     //
     // RU: Конкретные Итераторы реализуют различные алгоритмы обхода. Эти классы
     // постоянно хранят текущее положение обхода.
@@ -56,12 +58,12 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Conceptual
     {
         private WordsCollection _collection;
 		
-        // EN: Stores the current traversal position. An iterator may have
-        // a lot of other fields for storing iteration state, especially when it is
+        // EN: Stores the current traversal position. An iterator may have a lot
+        // of other fields for storing iteration state, especially when it is
         // supposed to work with a particular kind of collection.
         //
-        // RU: Хранит текущее положение обхода. У итератора может быть
-        // множество других полей для хранения состояния итерации, особенно когда он
+        // RU: Хранит текущее положение обхода. У итератора может быть множество
+        // других полей для хранения состояния итерации, особенно когда он
         // должен работать с определённым типом коллекции.
         private int _position = -1;
 		
@@ -74,25 +76,25 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Conceptual
 
             if (reverse)
             {
-                _position = collection.getItems().Count;
+                this._position = collection.getItems().Count;
             }
         }
 		
         public override object Current()
         {
-            return _collection.getItems()[_position];
+            return this._collection.getItems()[_position];
         }
 
         public override int Key()
         {
-            return _position;
+            return this._position;
         }
 		
         public override bool MoveNext()
         {
             int updatedPosition = this._position + (this._reverse ? -1 : 1);
 
-            if (updatedPosition >= 0 && updatedPosition < _collection.getItems().Count)
+            if (updatedPosition >= 0 && updatedPosition < this._collection.getItems().Count)
             {
                 this._position = updatedPosition;
                 return true;
@@ -109,8 +111,8 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Conceptual
         }
     }
 
-    // EN: Concrete Collections provide one or several methods for retrieving fresh
-    // iterator instances, compatible with the collection class.
+    // EN: Concrete Collections provide one or several methods for retrieving
+    // fresh iterator instances, compatible with the collection class.
     //
     // RU: Конкретные Коллекции предоставляют один или несколько методов для
     // получения новых экземпляров итератора, совместимых с классом коллекции.
@@ -145,13 +147,13 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Conceptual
     {
         public void ClientCode()
         {
-            // EN: The client code may or may not know about the Concrete Iterator or
-            // Collection classes, depending on the level of indirection you want to keep in
-            // your program.
+            // EN: The client code may or may not know about the Concrete
+            // Iterator or Collection classes, depending on the level of
+            // indirection you want to keep in your program.
             //
-            // RU: Клиентский код может знать или не знать о Конкретном Итераторе или
-            // классах Коллекций, в зависимости от уровня косвенности, который вы хотите
-            // сохранить в своей программе.
+            // RU: Клиентский код может знать или не знать о Конкретном
+            // Итераторе или классах Коллекций, в зависимости от уровня
+            // косвенности, который вы хотите сохранить в своей программе.
             var collection = new WordsCollection();
             collection.AddItem("First");
             collection.AddItem("Second");
@@ -177,10 +179,9 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Conceptual
     
     class Program
     {
-        public static void Main()
+        public static void Main(string[] args)
         {
-            Client client = new Client();
-            client.ClientCode();
+            Client.ClientCode();
         }
     }
 }

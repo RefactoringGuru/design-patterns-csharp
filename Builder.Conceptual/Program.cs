@@ -195,7 +195,7 @@ namespace RefactoringGuru.DesignPatterns.Builder.Conceptual
         // RU: Клиентский код создаёт объект-строитель, передаёт его директору,
         // а затем инициирует  процесс построения. Конечный результат
         // извлекается из объекта-строителя.
-        public void ClientCode(Director director)
+        public static void ClientCode(Director director)
         {
             var builder = new ConcreteBuilder();
             director.Builder = builder;
@@ -224,9 +224,7 @@ namespace RefactoringGuru.DesignPatterns.Builder.Conceptual
     {
         static void Main(string[] args)
         {
-            var client = new Client();
-            var director = new Director();
-            client.ClientCode(director);
+            Client.ClientCode(new Director());
         }
     }
 }

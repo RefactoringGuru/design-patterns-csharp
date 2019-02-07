@@ -13,23 +13,24 @@ using System;
 
 namespace RefactoringGuru.DesignPatterns.Adapter.Conceptual
 {
-    // EN: The Target defines the domain-specific interface used by the client code.
+    // EN: The Target defines the domain-specific interface used by the client
+    // code.
     //
-    // RU: Целевой класс объявляет интерфейс, с которым может работать клиентский
-    // код.
+    // RU: Целевой класс объявляет интерфейс, с которым может работать
+    // клиентский код.
     interface ITarget
     {
         string GetRequest();
     }
 
     // EN: The Adaptee contains some useful behavior, but its interface is
-    // incompatible with the existing client code. The Adaptee needs some adaptation
-    // before the client code can use it.
+    // incompatible with the existing client code. The Adaptee needs some
+    // adaptation before the client code can use it.
     //
     // RU: Адаптируемый класс содержит некоторое полезное поведение, но его
-    // интерфейс несовместим  с существующим клиентским кодом. Адаптируемый класс
-    // нуждается в некоторой доработке,  прежде чем клиентский код сможет его
-    // использовать.
+    // интерфейс несовместим  с существующим клиентским кодом. Адаптируемый
+    // класс нуждается в некоторой доработке,  прежде чем клиентский код сможет
+    // его использовать.
     class Adaptee
     {
         public string GetSpecificRequest()
@@ -38,8 +39,8 @@ namespace RefactoringGuru.DesignPatterns.Adapter.Conceptual
         }
     }
 
-    // EN: The Adapter makes the Adaptee's interface compatible with the Target's
-    // interface.
+    // EN: The Adapter makes the Adaptee's interface compatible with the
+    // Target's interface.
     //
     // RU: Адаптер делает интерфейс Адаптируемого класса совместимым с целевым
     // интерфейсом.
@@ -49,12 +50,12 @@ namespace RefactoringGuru.DesignPatterns.Adapter.Conceptual
 
         public Adapter(Adaptee adaptee)
         {
-            _adaptee = adaptee;
+            this._adaptee = adaptee;
         }
 
         public string GetRequest()
         {
-            return $"This is '{_adaptee.GetSpecificRequest()}'";
+            return $"This is '{this._adaptee.GetSpecificRequest()}'";
         }
     }
 

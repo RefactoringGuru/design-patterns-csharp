@@ -15,13 +15,13 @@ using System;
 
 namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
 {
-    // EN: The Mediator interface declares a method used by components to notify the
-    // mediator about various eventents. The Mediator may react to these eventents and
-    // pass the execution to other components.
+    // EN: The Mediator interface declares a method used by components to notify
+    // the mediator about various eventents. The Mediator may react to these
+    // eventents and pass the execution to other components.
     //
-    // RU: Интерфейс Посредника предоставляет метод, используемый компонентами для
-    // уведомления посредника о различных событиях. Посредник может реагировать на
-    // эти события  и передавать исполнение другим компонентам.
+    // RU: Интерфейс Посредника предоставляет метод, используемый компонентами
+    // для уведомления посредника о различных событиях. Посредник может
+    // реагировать на эти события  и передавать исполнение другим компонентам.
     interface Mediator
     {
         void Notify(object sender, string ev);
@@ -82,12 +82,13 @@ namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
         }
     }
 
-    // EN: Concrete Components implement various functionality. They don't depend on
-    // other components. They also don't depend on any concrete mediator classes.
+    // EN: Concrete Components implement various functionality. They don't
+    // depend on other components. They also don't depend on any concrete
+    // mediator classes.
     //
     // RU: Конкретные Компоненты реализуют различную функциональность. Они не
-    // зависят от других компонентов. Они также не зависят от каких-либо конкретных
-    // классов посредников.
+    // зависят от других компонентов. Они также не зависят от каких-либо
+    // конкретных классов посредников.
     class Component1 : BaseComponent
     {
         public void DoA()
@@ -133,12 +134,12 @@ namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
             Component2 component2 = new Component2();
             new ConcreteMediator(component1, component2);
 
-            Console.Write("Client triggets operation A.\n");
+            Console.WriteLine("Client triggets operation A.");
             component1.DoA();
 
             Console.WriteLine();
 
-            Console.Write("Client triggers operation D.\n");
+            Console.WriteLine("Client triggers operation D.");
             component2.DoD();
         }
     }

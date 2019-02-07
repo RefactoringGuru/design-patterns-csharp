@@ -42,7 +42,7 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
         {
             string s = JsonConvert.SerializeObject(this._sharedState);
             string u = JsonConvert.SerializeObject(uniqueState);
-            Console.Write($"Flyweight: Displaying shared {s} and unique {u} state.\n");
+            Console.WriteLine($"Flyweight: Displaying shared {s} and unique {u} state.");
         }
     }
 
@@ -100,12 +100,12 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
 
             if (flyweights.Where(t => t.Item2 == key).Count() == 0)
             {
-                Console.Write("FlyweightFactory: Can't find a flyweight, creating new one.\n");
+                Console.WriteLine("FlyweightFactory: Can't find a flyweight, creating new one.");
                 this.flyweights.Add(new Tuple<Flyweight, string>(new Flyweight(sharedState), key));
             }
             else
             {
-                Console.Write("FlyweightFactory: Reusing existing flyweight.\n");
+                Console.WriteLine("FlyweightFactory: Reusing existing flyweight.");
             }
             return this.flyweights.Where(t => t.Item2 == key).FirstOrDefault().Item1;
         }
@@ -113,7 +113,7 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
         public void listFlyweights()
         {
             var count = flyweights.Count;
-            Console.Write($"\nFlyweightFactory: I have {count} flyweights:\n");
+            Console.WriteLine($"\nFlyweightFactory: I have {count} flyweights:");
             foreach (var flyweight in flyweights)
             {
                 Console.WriteLine(flyweight.Item2);
@@ -138,7 +138,7 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
     {
         public void addCarToPoliceDatabase(FlyweightFactory factory, Car car)
         {
-            Console.Write("\nClient: Adding a car to database.\n");
+            Console.WriteLine("\nClient: Adding a car to database.");
 
             var flyweight = factory.GetFlyweight(new Car {
                 Color = car.Color,
@@ -146,21 +146,21 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
                 Company = car.Company
             });
             
-            // EN: The client code either stores or calculates extrinsic state and
-            // passes it to the flyweight's methods.
+            // EN: The client code either stores or calculates extrinsic state
+            // and passes it to the flyweight's methods.
             //
-            // RU: Клиентский код либо сохраняет, либо вычисляет внешнее состояние и
-            // передает его методам легковеса.
+            // RU: Клиентский код либо сохраняет, либо вычисляет внешнее
+            // состояние и передает его методам легковеса.
             flyweight.Operation(car);
         }
 
-        public void ClientCode()
+        public static void ClientCode()
         {
-            // EN: The client code usually creates a bunch of pre-populated flyweights in
-            // the initialization stage of the application.
+            // EN: The client code usually creates a bunch of pre-populated
+            // flyweights in the initialization stage of the application.
             //
-            // RU: Клиентский код обычно создает кучу предварительно заполненных легковесов
-            // на этапе инициализации приложения.
+            // RU: Клиентский код обычно создает кучу предварительно заполненных
+            // легковесов на этапе инициализации приложения.
             var factory = new FlyweightFactory(
                 new Car { Company = "Chevrolet", Model = "Camaro2018", Color = "pink" },
                 new Car { Company = "Mercedes Benz", Model = "C300", Color = "black" },
@@ -194,8 +194,7 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
     {
         static void Main(string[] args)
         {
-            Client client = new Client();
-            client.ClientCode();
+            Client.ClientCode();
         }
     }
 }

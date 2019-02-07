@@ -105,15 +105,15 @@ namespace RefactoringGuru.DesignPatterns.Observer.Conceptual
             }
         }
 
-        // EN: Usually, the subscription logic is only a fraction of what a Subject
-        // can really do. Subjects commonly hold some important business logic, that
-        // triggers a notification method whenever something important is about to
-        // happen (or after it).
+        // EN: Usually, the subscription logic is only a fraction of what a
+        // Subject can really do. Subjects commonly hold some important business
+        // logic, that triggers a notification method whenever something
+        // important is about to happen (or after it).
         //
         // RU: Обычно логика подписки – только часть того, что делает Издатель.
-        // Издатели часто содержат некоторую важную бизнес-логику, которая запускает
-        // метод уведомления всякий раз, когда должно произойти что-то важное (или
-        // после этого).
+        // Издатели часто содержат некоторую важную бизнес-логику, которая
+        // запускает метод уведомления всякий раз, когда должно произойти что-то
+        // важное (или после этого).
         public void SomeBusinessLogic()
         {
             Console.WriteLine("\nSubject: I'm doing something important.");

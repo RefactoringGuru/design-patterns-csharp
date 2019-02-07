@@ -106,7 +106,7 @@ namespace RefactoringGuru.DesignPatterns.Facade.Conceptual
         // интерфейс, предоставляемый Фасадом. Когда фасад управляет жизненным
         // циклом подсистемы, клиент может даже не знать о существовании
         // подсистемы. Такой подход позволяет держать сложность под контролем.
-        public void ClientCode(Facade facade)
+        public static void ClientCode(Facade facade)
         {
             Console.Write(facade.Operation());
         }
@@ -116,8 +116,6 @@ namespace RefactoringGuru.DesignPatterns.Facade.Conceptual
     {
         static void Main(string[] args)
         {
-            Client client = new Client();
-
             // EN: The client code may have some of the subsystem's objects
             // already created. In this case, it might be worthwhile to
             // initialize the Facade with these objects instead of letting the
@@ -130,7 +128,7 @@ namespace RefactoringGuru.DesignPatterns.Facade.Conceptual
             Subsystem1 subsystem1 = new Subsystem1();
             Subsystem2 subsystem2 = new Subsystem2();
             Facade facade = new Facade(subsystem1, subsystem2);
-            client.ClientCode(facade);
+            Client.ClientCode(facade);
         }
     }
 }

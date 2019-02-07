@@ -231,10 +231,10 @@ namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
             Console.WriteLine();
             caretaker.ShowHistory();
 
-            Console.Write("\nClient: Now, let's rollback!\n\n");
+            Console.WriteLine("\nClient: Now, let's rollback!\n");
             caretaker.Undo();
 
-            Console.Write("\n\nClient: Once more!\n\n");
+            Console.WriteLine("\n\nClient: Once more!\n");
             caretaker.Undo();
 
             Console.WriteLine();

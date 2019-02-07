@@ -80,24 +80,24 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
         }
     }
 
-    // EN: Concrete Decorators call the wrapped object and alter its result in some
-    // way.
+    // EN: Concrete Decorators call the wrapped object and alter its result in
+    // some way.
     //
-    // RU: Конкретные Декораторы вызывают обёрнутый объект и изменяют его результат
-    // некоторым образом.
+    // RU: Конкретные Декораторы вызывают обёрнутый объект и изменяют его
+    // результат некоторым образом.
     class ConcreteDecoratorA : Decorator
     {
         public ConcreteDecoratorA(Component comp) : base(comp)
         {
         }
 
-        // EN: Decorators may call parent implementation of the operation, instead
-        // of calling the wrapped object directly. This approach simplifies
-        // extension of decorator classes.
+        // EN: Decorators may call parent implementation of the operation,
+        // instead of calling the wrapped object directly. This approach
+        // simplifies extension of decorator classes.
         //
-        // RU: Декораторы могут вызывать родительскую реализацию операции,  вместо
-        // того, чтобы вызвать обёрнутый объект напрямую. Такой подход упрощает
-        // расширение классов декораторов.
+        // RU: Декораторы могут вызывать родительскую реализацию операции,
+        // вместо того, чтобы вызвать обёрнутый объект напрямую. Такой подход
+        // упрощает расширение классов декораторов.
         public override string Operation()
         {
             return $"ConcreteDecoratorA({base.Operation()})";
@@ -123,13 +123,13 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
     
     public class Client
     {
-        // EN: The client code works with all objects using the Component interface.
-        // This way it can stay independent of the concrete classes of components it
-        // works with.
+        // EN: The client code works with all objects using the Component
+        // interface. This way it can stay independent of the concrete classes
+        // of components it works with.
         //
         // RU: Клиентский код работает со всеми объектами, используя интерфейс
-        // Компонента. Таким образом, он остаётся независимым от конкретных классов
-        // компонентов,  с которыми работает.
+        // Компонента. Таким образом, он остаётся независимым от конкретных
+        // классов компонентов, с которыми работает.
         public void ClientCode(Component component)
         {
             Console.WriteLine("RESULT: " + component.Operation());
@@ -149,13 +149,13 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
 
             // EN: ...as well as decorated ones.
             //
-            // Note how decorators can wrap not only simple components but the other
-            // decorators as well.
+            // Note how decorators can wrap not only simple components but the
+            // other decorators as well.
             //
             // RU: ...так и декорированные.
             //
-            // Обратите внимание, что декораторы могут обёртывать не только простые
-            // компоненты, но и другие декораторы.
+            // Обратите внимание, что декораторы могут обёртывать не только
+            // простые компоненты, но и другие декораторы.
             ConcreteDecoratorA decorator1 = new ConcreteDecoratorA(simple);
             ConcreteDecoratorB decorator2 = new ConcreteDecoratorB(decorator1);
             Console.WriteLine("Client: Now I've got a decorated component:");

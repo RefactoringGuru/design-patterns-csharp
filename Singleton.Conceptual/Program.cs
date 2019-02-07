@@ -46,7 +46,7 @@ namespace Singleton
     
     class Client
     {
-        public void ClientCode()
+        public static void ClientCode()
         {
             // EN: The client code.
             //
@@ -69,8 +69,7 @@ namespace Singleton
     {
         static void Main(string[] args)
         {
-            Client client = new Client();
-            client.ClientCode();
+            Client.ClientCode();
         }
     }
 }

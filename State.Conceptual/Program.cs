@@ -58,14 +58,14 @@ namespace RefactoringGuru.DesignPatterns.State.Conceptual
     }
     
     // EN: The base State class declares methods that all Concrete State should
-    // implement and also provides a backreference to the Context object, associated
-    // with the State. This backreference can be used by States to transition the
-    // Context to another State.
+    // implement and also provides a backreference to the Context object,
+    // associated with the State. This backreference can be used by States to
+    // transition the Context to another State.
     //
-    // RU: Базовый класс Состояния объявляет методы, которые должны реализовать все
-    // Конкретные Состояния, а также предоставляет обратную ссылку на объект
-    // Контекст, связанный с Состоянием. Эта обратная ссылка может использоваться
-    // Состояниями для передачи Контекста другому Состоянию.
+    // RU: Базовый класс Состояния объявляет методы, которые должны реализовать
+    // все Конкретные Состояния, а также предоставляет обратную ссылку на объект
+    // Контекст, связанный с Состоянием. Эта обратная ссылка может
+    // использоваться Состояниями для передачи Контекста другому Состоянию.
     abstract class State
     {
         protected Context _context;
