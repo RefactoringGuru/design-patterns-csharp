@@ -122,10 +122,10 @@ namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
             this._mediator.Notify(this, "D");
         }
     }
-
-    class Client
+    
+    class Program
     {
-        public static void ClientCode()
+        static void Main(string[] args)
         {
             // EN: The client code.
             //
@@ -141,14 +141,6 @@ namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
 
             Console.WriteLine("Client triggers operation D.");
             component2.DoD();
-        }
-    }
-    
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Client.ClientCode();
         }
     }
 }

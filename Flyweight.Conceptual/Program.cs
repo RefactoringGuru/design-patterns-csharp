@@ -133,28 +133,10 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
 
         public string Color { get; set; }
     }
-
-    public class Client
+    
+    class Program
     {
-        public void addCarToPoliceDatabase(FlyweightFactory factory, Car car)
-        {
-            Console.WriteLine("\nClient: Adding a car to database.");
-
-            var flyweight = factory.GetFlyweight(new Car {
-                Color = car.Color,
-                Model = car.Model,
-                Company = car.Company
-            });
-            
-            // EN: The client code either stores or calculates extrinsic state
-            // and passes it to the flyweight's methods.
-            //
-            // RU: Клиентский код либо сохраняет, либо вычисляет внешнее
-            // состояние и передает его методам легковеса.
-            flyweight.Operation(car);
-        }
-
-        public static void ClientCode()
+        static void Main(string[] args)
         {
             // EN: The client code usually creates a bunch of pre-populated
             // flyweights in the initialization stage of the application.
@@ -188,13 +170,23 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
 
             factory.listFlyweights();
         }
-    }
-    
-    class Program
-    {
-        static void Main(string[] args)
+        
+        public void addCarToPoliceDatabase(FlyweightFactory factory, Car car)
         {
-            Client.ClientCode();
+            Console.WriteLine("\nClient: Adding a car to database.");
+
+            var flyweight = factory.GetFlyweight(new Car {
+                Color = car.Color,
+                Model = car.Model,
+                Company = car.Company
+            });
+            
+            // EN: The client code either stores or calculates extrinsic state
+            // and passes it to the flyweight's methods.
+            //
+            // RU: Клиентский код либо сохраняет, либо вычисляет внешнее
+            // состояние и передает его методам легковеса.
+            flyweight.Operation(car);
         }
     }
 }

@@ -115,9 +115,9 @@ namespace RefactoringGuru.DesignPatterns.State.Conceptual
         }
     }
 
-    class Client
+    class Program
     {
-        public static void ClientCode()
+        static void Main(string[] args)
         {
             // EN: The client code.
             //
@@ -125,14 +125,6 @@ namespace RefactoringGuru.DesignPatterns.State.Conceptual
             var context = new Context(new ConcreteStateA());
             context.Request1();
             context.Request2();
-        }
-    }
-    
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Client.ClientCode();
         }
     }
 }

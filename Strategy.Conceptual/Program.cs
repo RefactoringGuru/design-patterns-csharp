@@ -116,9 +116,9 @@ namespace RefactoringGuru.DesignPatterns.Strategy.Conceptual
         }
     }
 
-    class Client
+    class Program
     {
-        public static void ClientCode()
+        static void Main(string[] args)
         {
             // EN: The client code picks a concrete strategy and passes it to
             // the context. The client should be aware of the differences
@@ -138,14 +138,6 @@ namespace RefactoringGuru.DesignPatterns.Strategy.Conceptual
             Console.WriteLine("Client: Strategy is set to reverse sorting.");
             context.SetStrategy(new ConcreteStrategyB());
             context.DoSomeBusinessLogic();
-        }
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Client.ClientCode();
         }
     }
 }

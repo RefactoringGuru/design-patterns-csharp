@@ -143,9 +143,9 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Conceptual
         }
     }
 
-    public class Client
+    class Program
     {
-        public void ClientCode()
+        static void Main(string[] args)
         {
             // EN: The client code may or may not know about the Concrete
             // Iterator or Collection classes, depending on the level of
@@ -174,14 +174,6 @@ namespace RefactoringGuru.DesignPatterns.Iterator.Conceptual
             {
                 Console.WriteLine(element);
             }
-        }
-    }
-    
-    class Program
-    {
-        public static void Main(string[] args)
-        {
-            Client.ClientCode();
         }
     }
 }

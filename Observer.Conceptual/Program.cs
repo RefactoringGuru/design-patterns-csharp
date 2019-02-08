@@ -150,10 +150,10 @@ namespace RefactoringGuru.DesignPatterns.Observer.Conceptual
             }
         }
     }
-
-    class Client
+    
+    class Program
     {
-        public static void ClientCode()
+        static void Main(string[] args)
         {
             // EN: The client code.
             //
@@ -171,14 +171,6 @@ namespace RefactoringGuru.DesignPatterns.Observer.Conceptual
             subject.Detach(observerB);
 
             subject.SomeBusinessLogic();
-        }
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Client.ClientCode();
         }
     }
 }

@@ -208,10 +208,10 @@ namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
             }
         }
     }
-
-    class Client
+    
+    class Program
     {
-        public static void ClientCode()
+        static void Main(string[] args)
         {
             // EN: Client code.
             //
@@ -238,14 +238,6 @@ namespace RefactoringGuru.DesignPatterns.Memento.Conceptual
             caretaker.Undo();
 
             Console.WriteLine();
-        }
-    }
-    
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Client.ClientCode();
         }
     }
 }

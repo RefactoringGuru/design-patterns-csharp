@@ -95,9 +95,26 @@ namespace RefactoringGuru.DesignPatterns.Proxy.Conceptual
     
     public class Client
     {
+        // EN: The client code is supposed to work with all objects (both
+        // subjects and proxies) via the Subject interface in order to support
+        // both real subjects and proxies. In real life, however, clients mostly
+        // work with their real subjects directly. In this case, to implement
+        // the pattern more easily, you can extend your proxy from the real
+        // subject's class.
+        //
+        // RU: Клиентский код должен работать со всеми объектами (как с
+        // реальными, так и заместителями) через интерфейс Субъекта, чтобы
+        // поддерживать как реальные субъекты, так и заместителей. В реальной
+        // жизни, однако, клиенты в основном работают с реальными субъектами
+        // напрямую. В этом случае, для более простой реализации паттерна, можно
+        // расширить заместителя из класса реального субъекта.
         public void ClientCode(ISubject subject)
         {
+            // ...
+            
             subject.Request();
+            
+            // ...
         }
     }
     

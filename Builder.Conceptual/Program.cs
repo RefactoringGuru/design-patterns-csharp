@@ -186,17 +186,18 @@ namespace RefactoringGuru.DesignPatterns.Builder.Conceptual
         }
     }
 
-    public class Client
+    class Program
     {
-        // EN: The client code creates a builder object, passes it to the
-        // director and then initiates the construction process. The end result
-        // is retrieved from the builder object.
-        //
-        // RU: Клиентский код создаёт объект-строитель, передаёт его директору,
-        // а затем инициирует  процесс построения. Конечный результат
-        // извлекается из объекта-строителя.
-        public static void ClientCode(Director director)
+        static void Main(string[] args)
         {
+            // EN: The client code creates a builder object, passes it to the director and
+            // then initiates the construction process. The end result is retrieved from the
+            // builder object.
+            //
+            // RU: Клиентский код создаёт объект-строитель, передаёт его директору, а затем
+            // инициирует  процесс построения. Конечный результат извлекается из
+            // объекта-строителя.
+            var director = new Director();
             var builder = new ConcreteBuilder();
             director.Builder = builder;
             
@@ -217,14 +218,6 @@ namespace RefactoringGuru.DesignPatterns.Builder.Conceptual
             builder.BuildPartA();
             builder.BuildPartC();
             Console.Write(builder.GetProduct().ListParts());
-        }
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Client.ClientCode(new Director());
         }
     }
 }
