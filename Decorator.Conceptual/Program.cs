@@ -62,11 +62,9 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
             this._component = component;
         }
 
-        //
         // EN: The Decorator delegates all work to the wrapped component.
         //
         // RU: Декоратор делегирует всю работу обёрнутому компоненту.
-        ///
         public override string Operation()
         {
             if (this._component != null)

@@ -1,14 +1,12 @@
-﻿///
- // EN: Prototype Design Pattern
- //
- // Intent: Produce new objects by copying existing ones without compromising
- // their internal structure.
- //
- // RU: Паттерн Прототип
- //
- // Назначение: Создаёт новые объекты, копируя существующие без нарушения их
- // внутренней структуры.
- ///
+﻿// EN: Prototype Design Pattern
+//
+// Intent: Produce new objects by copying existing ones without compromising
+// their internal structure.
+//
+// RU: Паттерн Прототип
+//
+// Назначение: Создаёт новые объекты, копируя существующие без нарушения их
+// внутренней структуры.
 
 using System;
 

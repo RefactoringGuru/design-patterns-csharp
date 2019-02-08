@@ -52,13 +52,11 @@ namespace RefactoringGuru.DesignPatterns.Strategy.Conceptual
             this._strategy = strategy;
         }
 
-        //
         // EN: The Context delegates some work to the Strategy object instead of
         // implementing multiple versions of the algorithm on its own.
         //
         // RU: Вместо того, чтобы самостоятельно реализовывать множественные версии
         // алгоритма, Контекст делегирует некоторую работу объекту Стратегии.
-        ///
         public void DoSomeBusinessLogic()
         {
             Console.WriteLine("Context: Sorting data using the strategy (not sure how it'll do it)");

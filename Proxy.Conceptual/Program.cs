@@ -1,13 +1,13 @@
-﻿ // EN: Proxy Design Pattern
- //
- // Intent: Provide a surrogate or placeholder for another object to control
- // access to the original object or to add other responsibilities.
- //
- // RU: Паттерн Заместитель
- //
- // Назначение: Предоставляет заменитель или местозаполнитель для другого
- // объекта, чтобы контролировать доступ к оригинальному объекту или добавлять
- // другие обязанности.
+﻿// EN: Proxy Design Pattern
+//
+// Intent: Provide a surrogate or placeholder for another object to control
+// access to the original object or to add other responsibilities.
+//
+// RU: Паттерн Заместитель
+//
+// Назначение: Предоставляет заменитель или местозаполнитель для другого
+// объекта, чтобы контролировать доступ к оригинальному объекту или добавлять
+// другие обязанности.
 
 using System;
 

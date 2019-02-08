@@ -7,6 +7,7 @@ It contains C# examples for all classic GoF design patterns. Each pattern includ
 - **Conceptual** examples show the internal structure of patterns with detailed comments.
 - **RealWold** examples show how the patterns can be used in a real-world C# application.
 
+
 ## Status & Roadmap
 
 This repository is in the very initial state at the moment. Here are the missing examples:
@@ -65,18 +66,17 @@ Here's a style guide which might help you to keep your changes consistent with o
 6. Comments may or may not have language tags in them, such as this:
 
     ```csharp
-     /// <summary>
-     /// EN: All products families have the same varieties (MacOS/Windows).
-     ///
-     /// This is a MacOS variant of a button.
-     ///
-     /// RU: Все семейства продуктов имеют одни и те же вариации (MacOS/Windows).
-     ///
-     /// Это вариант кнопки под MacOS.
-     /// </summary>
+     // EN: All products families have the same varieties (MacOS/Windows).
+     //
+     // This is a MacOS variant of a button.
+     //
+     // RU: Все семейства продуктов имеют одни и те же вариации (MacOS/Windows).
+     //
+     // Это вариант кнопки под MacOS.
     ```
 
     This notation helps to keep the code in one place while allowing the website to generates separate versions of examples for all listed languages. Don't be scared and ignore the non-English part of such comments. If you want to change something in a comment like this, just do it. Even if you do it wrong, we'll tell you how to fix it during the Pull Request.
+
 
 ## License
 

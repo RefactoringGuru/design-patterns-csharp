@@ -69,11 +69,9 @@ namespace RefactoringGuru.DesignPatterns.Command.Conceptual
             this._b = b;
         }
 
-        //
         // EN: Commands can delegate to any methods of a receiver.
         //
         // RU: Команды могут делегировать выполнение любым методам получателя.
-        ///
         public void Execute()
         {
             Console.WriteLine("ComplexCommand: Complex stuff should be done by a receiver object.");

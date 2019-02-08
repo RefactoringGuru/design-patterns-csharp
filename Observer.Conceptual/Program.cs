@@ -90,11 +90,9 @@ namespace RefactoringGuru.DesignPatterns.Observer.Conceptual
             Console.WriteLine("Subject: Detached an observer.");
         }
 
-        //
         // EN: Trigger an update in each subscriber.
         //
         // RU: Запуск обновления в каждом подписчике.
-        ///
         public void Notify()
         {
             Console.WriteLine("Subject: Notifying observers...");
