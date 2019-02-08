@@ -1,4 +1,21 @@
-Primitive field values have been carried over to a clone. Yay!
-Simple component has been cloned. Yay!
-Component with back reference has been cloned. Yay!
-Component with back reference is linked to the clone. Yay!
+Original values of p1, p2, p3:
+   p1 instance values: 
+      Name: Jack Daniels, Age: 42, BirthDate: 01/01/77
+      ID#: 666
+   p2 instance values:
+      Name: Jack Daniels, Age: 42, BirthDate: 01/01/77
+      ID#: 666
+   p3 instance values:
+      Name: Jack Daniels, Age: 42, BirthDate: 01/01/77
+      ID#: 666
+
+Values of p1, p2 and p3 after changes to p1:
+   p1 instance values: 
+      Name: Frank, Age: 32, BirthDate: 01/01/00
+      ID#: 7878
+   p2 instance values (reference values have changed):
+      Name: Jack Daniels, Age: 42, BirthDate: 01/01/77
+      ID#: 7878
+   p3 instance values (everything was kept the same):
+      Name: Jack Daniels, Age: 42, BirthDate: 01/01/77
+      ID#: 666
