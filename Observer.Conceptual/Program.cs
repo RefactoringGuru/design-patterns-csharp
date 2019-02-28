@@ -12,14 +12,14 @@
 // RU: Паттерн Наблюдатель
 //
 // Назначение: Устанавливает между объектами зависимость «один ко многим» таким
-// образом, что когда изменяется состояние одного объекта, все зависимые от
-// него объекты оповещаются и обновляются автоматически.
+// образом, что когда изменяется состояние одного объекта, все зависимые от него
+// объекты оповещаются и обновляются автоматически.
 //
 // Обратите внимание, что существует множество различных терминов с похожими
 // значениями, связанных с этим паттерном. Просто помните, что Субъекта также
 // называют Издателем, а Наблюдателя часто называют Подписчиком и наоборот.
-// Также глаголы «наблюдать», «слушать» или «отслеживать» обычно означают одно
-// и то же.
+// Также глаголы «наблюдать», «слушать» или «отслеживать» обычно означают одно и
+// то же.
 
 using System;
 using System.Collections.Generic;
@@ -56,23 +56,23 @@ namespace RefactoringGuru.DesignPatterns.Observer.Conceptual
     // EN: The Subject owns some important state and notifies observers when the
     // state changes.
     //
-    // RU: Издатель владеет некоторым важным состоянием и оповещает наблюдателей о
-    // его изменениях.
+    // RU: Издатель владеет некоторым важным состоянием и оповещает наблюдателей
+    // о его изменениях.
     public class Subject : ISubject
     {
-        // EN: For the sake of simplicity, the Subject's state, essential
-        // to all subscribers, is stored in this variable.
+        // EN: For the sake of simplicity, the Subject's state, essential to all
+        // subscribers, is stored in this variable.
         //
         // RU: Для удобства в этой переменной хранится состояние Издателя,
         // необходимое всем подписчикам.
         public int State { get; set; } = -0;
 
-        // EN: List of subscribers. In real life, the list of subscribers
-        // can be stored more comprehensively (categorized by event type, etc.).
+        // EN: List of subscribers. In real life, the list of subscribers can be
+        // stored more comprehensively (categorized by event type, etc.).
         //
-        // RU: Список подписчиков. В реальной жизни список подписчиков
-        // может храниться в более подробном виде (классифицируется по типу события
-        // и т.д.)
+        // RU: Список подписчиков. В реальной жизни список подписчиков может
+        // храниться в более подробном виде (классифицируется по типу события и
+        // т.д.)
         private List<IObserver> _observers = new List<IObserver>();
 
         // EN: The subscription management methods.
@@ -124,11 +124,11 @@ namespace RefactoringGuru.DesignPatterns.Observer.Conceptual
         }
     }
 
-    // EN: Concrete Observers react to the updates issued by the Subject they had
-    // been attached to.
+    // EN: Concrete Observers react to the updates issued by the Subject they
+    // had been attached to.
     //
-    // RU: Конкретные Наблюдатели реагируют на обновления, выпущенные Издателем,  к
-    // которому они прикреплены.
+    // RU: Конкретные Наблюдатели реагируют на обновления, выпущенные Издателем,
+    // к которому они прикреплены.
     class ConcreteObserverA : IObserver
     {
         public void Update(ISubject subject)

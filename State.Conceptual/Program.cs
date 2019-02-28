@@ -13,12 +13,12 @@ using System;
 namespace RefactoringGuru.DesignPatterns.State.Conceptual
 {
     // EN: The Context defines the interface of interest to clients. It also
-    // maintains a reference to an instance of a State subclass, which represents
-    // the current state of the Context.
+    // maintains a reference to an instance of a State subclass, which
+    // represents the current state of the Context.
     //
-    // RU: Контекст определяет интерфейс, представляющий интерес для клиентов. Он
-    // также хранит ссылку на экземпляр подкласса Состояния, который отображает
-    // текущее состояние Контекста.
+    // RU: Контекст определяет интерфейс, представляющий интерес для клиентов.
+    // Он также хранит ссылку на экземпляр подкласса Состояния, который
+    // отображает текущее состояние Контекста.
     class Context
     {
         // EN: A reference to the current state of the Context.
@@ -80,11 +80,11 @@ namespace RefactoringGuru.DesignPatterns.State.Conceptual
         public abstract void Handle2();
     }
 
-    // EN: Concrete States implement various behaviors, associated with a state of
-    // the Context.
+    // EN: Concrete States implement various behaviors, associated with a state
+    // of the Context.
     //
-    // RU: Конкретные Состояния реализуют различные модели поведения, связанные с
-    // состоянием Контекста.
+    // RU: Конкретные Состояния реализуют различные модели поведения, связанные
+    // с состоянием Контекста.
     class ConcreteStateA : State
     {
         public override void Handle1()

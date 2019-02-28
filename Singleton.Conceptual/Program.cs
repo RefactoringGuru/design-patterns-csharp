@@ -12,8 +12,8 @@ using System;
 
 namespace Singleton
 {
-    // EN: The Singleton class defines the `getInstance` method that lets clients
-    // access the unique singleton instance.
+    // EN: The Singleton class defines the `getInstance` method that lets
+    // clients access the unique singleton instance.
     //
     // RU: Класс Одиночка предоставляет метод getInstance, который позволяет
     // клиентам получить доступ к уникальному экземпляру одиночки.
@@ -26,15 +26,16 @@ namespace Singleton
         private Singleton()
         { }
 
-        // EN: The static method that controls the access to the singleton instance.
+        // EN: The static method that controls the access to the singleton
+        // instance.
         //
-        // This implementation let you subclass the Singleton class while keeping
-        // just one instance of each subclass around.
+        // This implementation let you subclass the Singleton class while
+        // keeping just one instance of each subclass around.
         //
         // RU: Статический метод, управляющий доступом к экземпляру одиночки.
         //
-        // Эта реализация позволяет вам расширять класс Одиночки,
-        // сохраняя повсюду только один экземпляр каждого подкласса.
+        // Эта реализация позволяет вам расширять класс Одиночки, сохраняя
+        // повсюду только один экземпляр каждого подкласса.
         public static Singleton getInstance()
         {
             lock (_lock)

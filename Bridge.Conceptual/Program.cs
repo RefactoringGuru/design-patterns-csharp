@@ -126,8 +126,8 @@ namespace RefactoringGuru.DesignPatterns.Bridge.Conceptual
             Client client = new Client();
 
             Abstraction abstraction;
-            // EN: The client code should be able to work with any
-            // pre-configured abstraction-implementation combination.
+            // EN: The client code should be able to work with any pre-
+            // configured abstraction-implementation combination.
             //
             // RU: Клиентский код должен работать с любой предварительно
             // сконфигурированной комбинацией абстракции и реализации.

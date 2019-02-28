@@ -28,8 +28,8 @@ namespace RefactoringGuru.DesignPatterns.ChainOfResponsibility.Conceptual
         object Handle(object request);
     }
 
-    // EN: The default chaining behavior can be implemented inside a base handler
-    // class.
+    // EN: The default chaining behavior can be implemented inside a base
+    // handler class.
     //
     // RU: Поведение цепочки по умолчанию может быть реализовано внутри базового
     // класса обработчика.
@@ -111,8 +111,9 @@ namespace RefactoringGuru.DesignPatterns.ChainOfResponsibility.Conceptual
 
     class Client
     {
-        // EN: The client code is usually suited to work with a single handler. In most
-        // cases, it is not even aware that the handler is part of a chain.
+        // EN: The client code is usually suited to work with a single handler.
+        // In most cases, it is not even aware that the handler is part of a
+        // chain.
         //
         // RU: Обычно клиентский код приспособлен для работы с единственным
         // обработчиком. В большинстве случаев клиенту даже неизвестно, что этот
@@ -141,7 +142,8 @@ namespace RefactoringGuru.DesignPatterns.ChainOfResponsibility.Conceptual
     {
         static void Main(string[] args)
         {
-            // EN: The other part of the client code constructs the actual chain.
+            // EN: The other part of the client code constructs the actual
+            // chain.
             //
             // RU: Другая часть клиентского кода создает саму цепочку.
             var monkey = new MonkeyHandler();
@@ -150,11 +152,11 @@ namespace RefactoringGuru.DesignPatterns.ChainOfResponsibility.Conceptual
 
             monkey.SetNext(squirrel).SetNext(dog);
 
-            // EN: The client should be able to send a request to any handler, not just the
-            // first one in the chain.
+            // EN: The client should be able to send a request to any handler,
+            // not just the first one in the chain.
             //
-            // RU: Клиент должен иметь возможность отправлять запрос любому обработчику, а
-            // не только первому в цепочке.
+            // RU: Клиент должен иметь возможность отправлять запрос любому
+            // обработчику, а не только первому в цепочке.
             Console.WriteLine("Chain: Monkey > Squirrel > Dog\n");
             Client.ClientCode(monkey);
             Console.WriteLine();

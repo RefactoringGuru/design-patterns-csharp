@@ -5,9 +5,9 @@
 //
 // RU: Паттерн Строитель
 //
-// Назначение: Отделяет построение сложного объекта от его
-// представления так,  что один и тот же процесс построения может создавать
-// разные представления объекта.
+// Назначение: Отделяет построение сложного объекта от его представления так,
+// что один и тот же процесс построения может создавать разные представления
+// объекта.
 
 using System;
 using System.Collections.Generic;
@@ -168,8 +168,8 @@ namespace RefactoringGuru.DesignPatterns.Builder.Conceptual
             set { _builder = value; } 
         }
         
-        // EN: The Director can construct several product variations using the same
-        // building steps.
+        // EN: The Director can construct several product variations using the
+        // same building steps.
         //
         // RU: Директор может строить несколько вариаций продукта, используя
         // одинаковые шаги построения.
@@ -190,13 +190,13 @@ namespace RefactoringGuru.DesignPatterns.Builder.Conceptual
     {
         static void Main(string[] args)
         {
-            // EN: The client code creates a builder object, passes it to the director and
-            // then initiates the construction process. The end result is retrieved from the
-            // builder object.
+            // EN: The client code creates a builder object, passes it to the
+            // director and then initiates the construction process. The end
+            // result is retrieved from the builder object.
             //
-            // RU: Клиентский код создаёт объект-строитель, передаёт его директору, а затем
-            // инициирует  процесс построения. Конечный результат извлекается из
-            // объекта-строителя.
+            // RU: Клиентский код создаёт объект-строитель, передаёт его
+            // директору, а затем инициирует  процесс построения. Конечный
+            // результат извлекается из объекта-строителя.
             var director = new Director();
             var builder = new ConcreteBuilder();
             director.Builder = builder;

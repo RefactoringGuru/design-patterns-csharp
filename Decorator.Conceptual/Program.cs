@@ -102,11 +102,11 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
         }
     }
 
-    // EN: Decorators can execute their behavior either before or after the call to
-    // a wrapped object.
+    // EN: Decorators can execute their behavior either before or after the call
+    // to a wrapped object.
     //
-    // RU: Декораторы могут выполнять своё поведение до или после вызова обёрнутого
-    // объекта.
+    // RU: Декораторы могут выполнять своё поведение до или после вызова
+    // обёрнутого объекта.
     class ConcreteDecoratorB : Decorator
     {
         public ConcreteDecoratorB(Component comp) : base(comp)

@@ -16,8 +16,8 @@ using System;
 namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
 {
     // EN: The Mediator interface declares a method used by components to notify
-    // the mediator about various eventents. The Mediator may react to these
-    // eventents and pass the execution to other components.
+    // the mediator about various events. The Mediator may react to these
+    // events and pass the execution to other components.
     //
     // RU: Интерфейс Посредника предоставляет метод, используемый компонентами
     // для уведомления посредника о различных событиях. Посредник может
@@ -27,8 +27,8 @@ namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
         void Notify(object sender, string ev);
     }
 
-    // EN: Concrete Mediators implement cooperative behavior by coordinating several
-    // components.
+    // EN: Concrete Mediators implement cooperative behavior by coordinating
+    // several components.
     //
     // RU: Конкретные Посредники реализуют совместное поведение, координируя
     // отдельные компоненты.

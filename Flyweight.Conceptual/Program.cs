@@ -15,7 +15,8 @@ using System.Collections.Generic;
 using System.Linq;
 // EN: Use Json.NET library, you can download it from NuGet Package Manager
 //
-// RU: Используем библиотеку Json.NET, загрузить можно через NuGet Package Manager
+// RU: Используем библиотеку Json.NET, загрузить можно через NuGet Package
+// Manager
 using Newtonsoft.Json;
 
 namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
@@ -92,8 +93,8 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
         // EN: Returns an existing Flyweight with a given state or creates a new
         // one.
         //
-        // RU: Возвращает существующий Легковес с заданным состоянием или создает
-        // новый.
+        // RU: Возвращает существующий Легковес с заданным состоянием или
+        // создает новый.
         public Flyweight GetFlyweight(Car sharedState)
         {
             string key = this.getKey(sharedState);

@@ -73,9 +73,11 @@ namespace RefactoringGuru.DesignPatterns.Prototype.Conceptual
             Console.WriteLine("   p3 instance values:");
             DisplayValues(p3);
 
-            // EN: Change the value of p1 properties and display the values of p1, p2 and p3.
+            // EN: Change the value of p1 properties and display the values of
+            // p1, p2 and p3.
             //
-            // RU: Изменить значение свойств p1 и отобразить значения p1, p2 и p3.
+            // RU: Изменить значение свойств p1 и отобразить значения p1, p2 и
+            // p3.
             p1.Age = 32;
             p1.BirthDate = Convert.ToDateTime("1900-01-01");
             p1.Name = "Frank";
@@ -91,7 +93,8 @@ namespace RefactoringGuru.DesignPatterns.Prototype.Conceptual
 
         public static void DisplayValues(Person p)
         {
-            Console.WriteLine("      Name: {0:s}, Age: {1:d}, BirthDate: {2:MM/dd/yy}", p.Name, p.Age, p.BirthDate);
+            Console.WriteLine("      Name: {0:s}, Age: {1:d}, BirthDate: {2:MM/dd/yy}",
+                p.Name, p.Age, p.BirthDate);
             Console.WriteLine("      ID#: {0:d}", p.IdInfo.IdNumber);
         }
     }

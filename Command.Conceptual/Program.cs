@@ -6,9 +6,9 @@
 //
 // RU: Паттерн Команда
 //
-// Назначение: Инкапсулирует запрос как объект, позволяя тем
-// самым параметризовать клиентов с различными запросами (например, запросами
-// очереди или логирования) и   поддерживать отмену операций.
+// Назначение: Инкапсулирует запрос как объект, позволяя тем самым
+// параметризовать клиентов с различными запросами (например, запросами очереди
+// или логирования) и   поддерживать отмену операций.
 
 using System;
 
@@ -80,9 +80,9 @@ namespace RefactoringGuru.DesignPatterns.Command.Conceptual
         }
     }
 
-    // EN: The Receiver classes contain some important business logic. They know how
-    // to perform all kinds of operations, associated with carrying out a request.
-    // In fact, any class may serve as a Receiver.
+    // EN: The Receiver classes contain some important business logic. They know
+    // how to perform all kinds of operations, associated with carrying out a
+    // request. In fact, any class may serve as a Receiver.
     //
     // RU: Классы Получателей содержат некую важную бизнес-логику. Они умеют
     // выполнять все виды операций, связанных с выполнением запроса. Фактически,
@@ -103,8 +103,8 @@ namespace RefactoringGuru.DesignPatterns.Command.Conceptual
     // EN: The Invoker is associated with one or several commands. It sends a
     // request to the command.
     //
-    // RU: Отправитель связан с одной или несколькими командами. Он отправляет запрос
-    // команде.
+    // RU: Отправитель связан с одной или несколькими командами. Он отправляет
+    // запрос команде.
     class Invoker
     {
         private ICommand _onStart;
@@ -124,12 +124,13 @@ namespace RefactoringGuru.DesignPatterns.Command.Conceptual
             this._onFinish = command;
         }
 
-        // EN: The Invoker does not depend on concrete command or receiver classes.
-        // The Invoker passes a request to a receiver indirectly, by executing a
-        // command.
+        // EN: The Invoker does not depend on concrete command or receiver
+        // classes. The Invoker passes a request to a receiver indirectly, by
+        // executing a command.
         //
-        // RU: Отправитель не зависит от классов конкретных команд и получателей.
-        // Отправитель передаёт запрос получателю косвенно, выполняя команду.
+        // RU: Отправитель не зависит от классов конкретных команд и
+        // получателей. Отправитель передаёт запрос получателю косвенно,
+        // выполняя команду.
         public void DoSomethingImportant()
         {
             Console.WriteLine("Invoker: Does anybody want something done before I begin?");
@@ -152,9 +153,11 @@ namespace RefactoringGuru.DesignPatterns.Command.Conceptual
     {
         static void Main(string[] args)
         {
-            // EN: The client code can parameterize an invoker with any commands.
+            // EN: The client code can parameterize an invoker with any
+            // commands.
             //
-            // RU: Клиентский код может параметризовать отправителя любыми командами.
+            // RU: Клиентский код может параметризовать отправителя любыми
+            // командами.
             Invoker invoker = new Invoker();
             invoker.SetOnStart(new SimpleCommand("Say Hi!"));
             Receiver receiver = new Receiver();

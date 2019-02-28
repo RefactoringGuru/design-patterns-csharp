@@ -37,12 +37,13 @@ namespace RefactoringGuru.DesignPatterns.Facade.Conceptual
             this._subsystem2 = subsystem2;
         }
 		
-        // EN: The Facade's methods are convenient shortcuts to the sophisticated
-        // functionality of the subsystems. However, clients get only to a fraction
-        // of a subsystem's capabilities.
+        // EN: The Facade's methods are convenient shortcuts to the
+        // sophisticated functionality of the subsystems. However, clients get
+        // only to a fraction of a subsystem's capabilities.
         //
-        // RU: Методы Фасада удобны для быстрого доступа к сложной функциональности
-        // подсистем. Однако клиенты получают только часть возможностей подсистемы.
+        // RU: Методы Фасада удобны для быстрого доступа к сложной
+        // функциональности подсистем. Однако клиенты получают только часть
+        // возможностей подсистемы.
         public string Operation()
         {
             string result = "Facade initializes subsystems:\n";
