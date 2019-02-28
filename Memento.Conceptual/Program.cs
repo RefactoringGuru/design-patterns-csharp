@@ -1,13 +1,13 @@
 ﻿// EN: Memento Design Pattern
 //
-// Intent: Capture and externalize an object's internal state so that the object
-// can be restored to this state later, without violating encapsulation.
+// Intent: Lets you save and restore the previous state of an object without
+// revealing the details of its implementation.
 //
 // RU: Паттерн Снимок
 //
-// Назначение: Фиксирует и восстанавливает внутреннее состояние объекта таким
-// образом, чтобы  в дальнейшем объект можно было восстановить в этом состоянии
-// без нарушения инкапсуляции.
+// Назначение: Позволяет делать снимки состояния объектов, не раскрывая
+// подробностей их реализации. Затем снимки можно использовать, чтобы
+// восстановить прошлое состояние объектов.
 
 using System;
 using System.Collections.Generic;

@@ -1,14 +1,14 @@
 ﻿// EN: Template Method Design Pattern
 //
-// Intent: Define the skeleton of an algorithm, deferring implementation of some
-// steps to subclasses. Template Method lets subclasses redefine specific steps
-// of an algorithm without changing the algorithm's structure.
+// Intent: Defines the skeleton of an algorithm in the superclass but lets
+// subclasses override specific steps of the algorithm without changing its
+// structure.
 //
 // RU: Паттерн Шаблонный метод
 //
-// Назначение: Определяет общую схему алгоритма, перекладывая реализацию
-// некоторых шагов  на подклассы. Шаблонный метод позволяет подклассам
-// переопределять отдельные шаги алгоритма без изменения структуры алгоритма.
+// Назначение: Определяет скелет алгоритма, перекладывая ответственность за
+// некоторые его шаги на подклассы. Паттерн позволяет подклассам переопределять
+// шаги алгоритма, не меняя его общей структуры.
 
 using System;
 
