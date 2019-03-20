@@ -21,8 +21,6 @@ namespace Singleton
     {
         private static Singleton _instance;
 
-        private static object _lock = new object();
-
         private Singleton()
         { }
 
@@ -36,12 +34,13 @@ namespace Singleton
         //
         // Эта реализация позволяет вам расширять класс Одиночки, сохраняя
         // повсюду только один экземпляр каждого подкласса.
-        public static Singleton getInstance()
+        public static Singleton GetInstance()
         {
-            lock (_lock)
+            if (_instance == null)
             {
-                return _instance ?? (_instance = new Singleton());
+                _instance = new Singleton();
             }
+            return _instance;
         }
     }
 
@@ -52,8 +51,8 @@ namespace Singleton
             // EN: The client code.
             //
             // RU: Клиентский код.
-            Singleton s1 = Singleton.getInstance();
-            Singleton s2 = Singleton.getInstance();
+            Singleton s1 = Singleton.GetInstance();
+            Singleton s2 = Singleton.GetInstance();
 
             if (s1 == s2)
             {
