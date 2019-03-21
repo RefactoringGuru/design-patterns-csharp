@@ -41,8 +41,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototype.Conceptual", "Pro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proxy.Conceptual", "Proxy.Conceptual\Proxy.Conceptual.csproj", "{422D8542-34CD-4A2D-B4BC-3CFA4A8F6E17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Singleton.Conceptual", "Singleton.Conceptual\Singleton.Conceptual.csproj", "{7ECFE5B9-B611-47FD-ABC4-7C648F599B75}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "State.Conceptual", "State.Conceptual\State.Conceptual.csproj", "{111A1AE4-043C-40F5-915F-FC1CD903F751}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strategy.Conceptual", "Strategy.Conceptual\Strategy.Conceptual.csproj", "{AABC9303-B16F-4803-B5B4-8B7336EA96E8}"
@@ -50,6 +48,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMethod.Conceptual", "TemplateMethod.Conceptual\TemplateMethod.Conceptual.csproj", "{046C4FCC-509A-439E-980A-BFBC0E62A79F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visitor.Conceptual", "Visitor.Conceptual\Visitor.Conceptual.csproj", "{6834BA82-2BAA-485E-BB8F-96078DAC6877}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Singleton.Conceptual.NonThreadSafe", "Singleton.Conceptual\NonThreadSafe\Singleton.Conceptual.NonThreadSafe.csproj", "{4F3A1732-04E7-494E-A7BE-7764C21483B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Singleton.Conceptual.ThreadSafe", "Singleton.Conceptual\ThreadSafe\Singleton.Conceptual.ThreadSafe.csproj", "{4FBA49E6-3CBE-421D-8E4F-182F13B6319D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -125,10 +127,6 @@ Global
 		{422D8542-34CD-4A2D-B4BC-3CFA4A8F6E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{422D8542-34CD-4A2D-B4BC-3CFA4A8F6E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{422D8542-34CD-4A2D-B4BC-3CFA4A8F6E17}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7ECFE5B9-B611-47FD-ABC4-7C648F599B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7ECFE5B9-B611-47FD-ABC4-7C648F599B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7ECFE5B9-B611-47FD-ABC4-7C648F599B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7ECFE5B9-B611-47FD-ABC4-7C648F599B75}.Release|Any CPU.Build.0 = Release|Any CPU
 		{111A1AE4-043C-40F5-915F-FC1CD903F751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{111A1AE4-043C-40F5-915F-FC1CD903F751}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{111A1AE4-043C-40F5-915F-FC1CD903F751}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -145,6 +143,14 @@ Global
 		{6834BA82-2BAA-485E-BB8F-96078DAC6877}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6834BA82-2BAA-485E-BB8F-96078DAC6877}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6834BA82-2BAA-485E-BB8F-96078DAC6877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F3A1732-04E7-494E-A7BE-7764C21483B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F3A1732-04E7-494E-A7BE-7764C21483B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F3A1732-04E7-494E-A7BE-7764C21483B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F3A1732-04E7-494E-A7BE-7764C21483B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FBA49E6-3CBE-421D-8E4F-182F13B6319D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FBA49E6-3CBE-421D-8E4F-182F13B6319D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FBA49E6-3CBE-421D-8E4F-182F13B6319D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FBA49E6-3CBE-421D-8E4F-182F13B6319D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

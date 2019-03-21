@@ -13,50 +13,79 @@ using System.Threading;
 
 namespace Singleton
 {
-    // EN: The Singleton class defines the `getInstance` method that lets
-    // clients access the unique singleton instance.
+    // EN: This Singleton implementation is called "double check lock". It is
+    // safe in multithreaded environment and provides lazy initialization for
+    // the Singleton object.
     //
-    // RU: Класс Одиночка предоставляет метод getInstance, который позволяет
-    // клиентам получить доступ к уникальному экземпляру одиночки.
+    // RU: Эта реализация Одиночки называется "блокировка с двойной проверкой"
+    // (double check lock). Она безопасна в многопоточной среде, а также
+    // позволяет отложенную инициализацию объекта Одиночки.
     class Singleton
     {
+        private Singleton() { }
+
         private static Singleton _instance;
 
+        // EN: We now have a lock object that will be used to synchronize
+        // threads during first access to the Singleton.
+        //
+        // RU: У нас теперь есть объект-блокировка для синхронизации потоков во
+        // время первого доступа к Одиночке.
         private static readonly object _lock = new object();
-        
-        private string _value;
 
-        public Singleton(string value)
-        {
-            this._value = value; 
-        }
-        
-        public string GetValue()
-        {
-            return this._value;
-        }
-
-        // EN: The static method that controls the access to the singleton
-        // instance.
-        //
-        // This implementation let you subclass the Singleton class while
-        // keeping just one instance of each subclass around.
-        //
-        // RU: Статический метод, управляющий доступом к экземпляру одиночки.
-        //
-        // Эта реализация позволяет вам расширять класс Одиночки, сохраняя
-        // повсюду только один экземпляр каждого подкласса.
         public static Singleton GetInstance(string value)
         {
-            lock (_lock)
+            // EN: This conditional is needed to prevent threads stumbling over
+            // the lock once the instance is ready.
+            //
+            // RU: Это условие нужно для того, чтобы не стопорить потоки
+            // блокировкой после того как объект-одиночка уже создан.
+            if (_instance == null)
             {
-                if (_instance == null)
+                // EN: Now, imagine that the program has just been launched.
+                // Since there's no Singleton instance yet, multiple threads can
+                // simultaneously pass the previous conditional and reach this
+                // point almost at the same time. The first of them will acquire
+                // lock and will proceed further, while the rest will wait here.
+                //
+                // RU: Теперь представьте, что программа была только-только
+                // запущена. Объекта-одиночки ещё никто не создавал, поэтому
+                // несколько потоков вполне могли одновременно пройти через
+                // предыдущее условие и достигнуть блокировки. Самый быстрый
+                // поток поставит блокировку и двинется внутрь секции, пока
+                // другие будут здесь его ожидать.
+                lock (_lock)
                 {
-                    _instance = new Singleton(value);
+                    // EN: The first thread to acquire the lock, reaches this
+                    // conditional, goes inside and creates the Singleton
+                    // instance. Once it leaves the lock block, a thread that
+                    // might have been waiting for the lock release may then
+                    // enter this section. But since the Singleton field is
+                    // already initialized, the thread won't create a new
+                    // object.
+                    //
+                    // Первый поток достигает этого условия и проходит внутрь,
+                    // создавая объект-одиночку. Как только этот поток покинет
+                    // секцию и освободит блокировку, следующий поток может
+                    // снова установить блокировку и зайти внутрь. Однако теперь
+                    // экземпляр одиночки уже будет создан и поток не сможет
+                    // пройти через это условие, а значит новый объект не будет
+                    // создан.
+                    if (_instance == null)
+                    {
+                        _instance = new Singleton();
+                        _instance.Value = value;
+                    }
                 }
             }
             return _instance;
         }
+
+        // EN: We'll use this property to prove that our Singleton really works.
+        //
+        // RU: Мы используем это поле, чтобы доказать, что наш Одиночка
+        // действительно работает.
+        public string Value { get; set; }
     }
 
     class Program
@@ -93,7 +122,7 @@ namespace Singleton
         public static void TestSingleton(string value)
         {
             Singleton singleton = Singleton.GetInstance(value);
-            Console.WriteLine(singleton.GetValue());
+            Console.WriteLine(singleton.Value);
         } 
     }
 }
