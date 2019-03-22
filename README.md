@@ -83,3 +83,7 @@ Here's a style guide which might help you to keep your changes consistent with o
 This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+
+## Credits
+
+Authors:  Alexander Shvets ([@neochief](https://github.com/neochief)) and Alexey Pyltsyn ([@lex111](https://github.com/lex111))
