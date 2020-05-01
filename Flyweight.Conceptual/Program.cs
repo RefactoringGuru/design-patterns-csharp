@@ -134,7 +134,7 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
 
         public string Color { get; set; }
     }
-    
+
     class Program
     {
         static void Main(string[] args)
@@ -171,8 +171,8 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
 
             factory.listFlyweights();
         }
-        
-        public void addCarToPoliceDatabase(FlyweightFactory factory, Car car)
+
+        public static void addCarToPoliceDatabase(FlyweightFactory factory, Car car)
         {
             Console.WriteLine("\nClient: Adding a car to database.");
 
@@ -181,7 +181,7 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
                 Model = car.Model,
                 Company = car.Company
             });
-            
+
             // EN: The client code either stores or calculates extrinsic state
             // and passes it to the flyweight's methods.
             //
