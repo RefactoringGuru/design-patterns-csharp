@@ -72,7 +72,6 @@ namespace RefactoringGuru.DesignPatterns.Proxy.Conceptual
         {
             if (this.CheckAccess())
             {
-                this._realSubject = new RealSubject();
                 this._realSubject.Request();
 
                 this.LogAccess();
