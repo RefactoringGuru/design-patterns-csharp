@@ -174,12 +174,12 @@ namespace RefactoringGuru.DesignPatterns.Builder.Conceptual
         //
         // RU: Директор может строить несколько вариаций продукта, используя
         // одинаковые шаги построения.
-        public void buildMinimalViableProduct()
+        public void BuildMinimalViableProduct()
         {
             this._builder.BuildPartA();
         }
 		
-        public void buildFullFeaturedProduct()
+        public void BuildFullFeaturedProduct()
         {
             this._builder.BuildPartA();
             this._builder.BuildPartB();
@@ -203,11 +203,11 @@ namespace RefactoringGuru.DesignPatterns.Builder.Conceptual
             director.Builder = builder;
             
             Console.WriteLine("Standard basic product:");
-            director.buildMinimalViableProduct();
+            director.BuildMinimalViableProduct();
             Console.WriteLine(builder.GetProduct().ListParts());
 
             Console.WriteLine("Standard full featured product:");
-            director.buildFullFeaturedProduct();
+            director.BuildFullFeaturedProduct();
             Console.WriteLine(builder.GetProduct().ListParts());
 
             // EN: Remember, the Builder pattern can be used without a Director
