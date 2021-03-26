@@ -1,4 +1,4 @@
-﻿// EN: Composite Design Pattern
+// EN: Composite Design Pattern
 //
 // Intent: Lets you compose objects into tree structures and then work with
 // these structures as if they were individual objects.
@@ -30,37 +30,6 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
         // умолчанию или поручить это конкретным классам, объявив метод,
         // содержащий поведение абстрактным.
         public abstract string Operation();
-
-        // EN: In some cases, it would be beneficial to define the child-
-        // management operations right in the base Component class. This way,
-        // you won't need to expose any concrete component classes to the client
-        // code, even during the object tree assembly. The downside is that
-        // these methods will be empty for the leaf-level components.
-        //
-        // RU: В некоторых случаях целесообразно определить операции управления
-        // потомками прямо в базовом классе Компонент. Таким образом, вам не
-        // нужно будет предоставлять  конкретные классы компонентов клиентскому
-        // коду, даже во время сборки дерева объектов. Недостаток такого подхода
-        // в том, что эти методы будут пустыми для компонентов уровня листа.
-        public virtual void Add(Component component)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual void Remove(Component component)
-        {
-            throw new NotImplementedException();
-        }
-
-        // EN: You can provide a method that lets the client code figure out
-        // whether a component can bear children.
-        //
-        // RU: Вы можете предоставить метод, который позволит клиентскому коду
-        // понять, может ли компонент иметь вложенные объекты.
-        public virtual bool IsComposite()
-        {
-            return true;
-        }
     }
 
     // EN: The Leaf class represents the end objects of a composition. A leaf
@@ -80,11 +49,6 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
         {
             return "Leaf";
         }
-
-        public override bool IsComposite()
-        {
-            return false;
-        }
     }
 
     // EN: The Composite class represents the complex components that may have
@@ -98,12 +62,12 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
     {
         protected List<Component> _children = new List<Component>();
         
-        public override void Add(Component component)
+        public void Add(Component component)
         {
             this._children.Add(component);
         }
 
-        public override void Remove(Component component)
+        public void Remove(Component component)
         {
             this._children.Remove(component);
         }
@@ -144,9 +108,9 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
         //
         // RU: Клиентский код работает со всеми компонентами через базовый
         // интерфейс.
-        public void ClientCode(Component leaf)
+        public void ClientCode(Component component)
         {
-            Console.WriteLine($"RESULT: {leaf.Operation()}\n");
+            Console.WriteLine($"RESULT: {component.Operation()}\n");
         }
 
         // EN: Thanks to the fact that the child-management operations are
@@ -158,14 +122,10 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
         // базовом классе Компонента, клиентский код может работать как с
         // простыми, так и со сложными компонентами, вне зависимости от их
         // конкретных классов.
-        public void ClientCode2(Component component1, Component component2)
+        public void ClientCode2(Composite composite, Component component)
         {
-            if (component1.IsComposite())
-            {
-                component1.Add(component2);
-            }
-            
-            Console.WriteLine($"RESULT: {component1.Operation()}");
+			composite.Add(component);
+            Console.WriteLine($"RESULT: {composite.Operation()}");
         }
     }
     
