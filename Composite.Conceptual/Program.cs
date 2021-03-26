@@ -112,19 +112,10 @@ namespace RefactoringGuru.DesignPatterns.Composite.Conceptual
         {
             Console.WriteLine($"RESULT: {component.Operation()}\n");
         }
-
-        // EN: Thanks to the fact that the child-management operations are
-        // declared in the base Component class, the client code can work with
-        // any component, simple or complex, without depending on their concrete
-        // classes.
-        //
-        // RU: Благодаря тому, что операции управления потомками объявлены в
-        // базовом классе Компонента, клиентский код может работать как с
-        // простыми, так и со сложными компонентами, вне зависимости от их
-        // конкретных классов.
+        
         public void ClientCode2(Composite composite, Component component)
         {
-			composite.Add(component);
+            composite.Add(component);
             Console.WriteLine($"RESULT: {composite.Operation()}");
         }
     }
