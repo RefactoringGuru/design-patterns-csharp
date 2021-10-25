@@ -10,7 +10,7 @@
 
 using System;
 
-namespace Singleton
+namespace RefactoringGuru.DesignPatterns.Singleton.Conceptual.NonThreadSafe
 {
     // EN: The Singleton class defines the `GetInstance` method that serves as
     // an alternative to constructor and lets clients access the same instance
@@ -19,7 +19,10 @@ namespace Singleton
     // RU: Класс Одиночка предоставляет метод `GetInstance`, который ведёт себя
     // как альтернативный конструктор и позволяет клиентам получать один и тот
     // же экземпляр класса при каждом вызове.
-    class Singleton
+
+    // EN : The Singleton should always be a 'sealed' class to prevent class
+    // inheritance through external classes and also through nested classes.
+    public sealed class Singleton
     {
         // EN: The Singleton's constructor should always be private to prevent
         // direct construction calls with the `new` operator.
