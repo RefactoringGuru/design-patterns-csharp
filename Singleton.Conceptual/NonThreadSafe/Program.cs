@@ -66,7 +66,7 @@ namespace RefactoringGuru.DesignPatterns.Singleton.Conceptual.NonThreadSafe
         //
         // RU: Наконец, любой одиночка должен содержать некоторую бизнес-логику,
         // которая может быть выполнена на его экземпляре.
-        public static void someBusinessLogic()
+        public void someBusinessLogic()
         {
             // ...
         }
