@@ -132,7 +132,7 @@ namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
             Component2 component2 = new Component2();
             new ConcreteMediator(component1, component2);
 
-            Console.WriteLine("Client triggets operation A.");
+            Console.WriteLine("Client triggers operation A.");
             component1.DoA();
 
             Console.WriteLine();
