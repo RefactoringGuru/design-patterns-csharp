@@ -1,3 +1,4 @@
-Red 2000 KW - 320 MPH  created!
-Black 1500 KW - 280 MPH  created!
-White 2500 KW - 230 MPH  created!
+Type: Sedan / EnginePower: 2000 / MaximumSpeed: 320 / Color: Blue
+Type: Sedan / EnginePower: 2000 / MaximumSpeed: 320 / Color: Red
+Type: HatchBack / EnginePower: 1500 / MaximumSpeed: 280 / Color: White
+Type: HatchBack / EnginePower: 1500 / MaximumSpeed: 280 / Color: Black

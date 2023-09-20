@@ -1,76 +1,90 @@
 ﻿// Client
-Car suvCar = SuvFactory.CreateInstance(CarType.Suv, new Suv(2000, 320, "Red"));
-Car sedanCar = SedanFactory.CreateInstance(CarType.Sedan, new Suv(1500, 280, "Black"));
-Car hatchBackCar = HatchBackFactory.CreateInstance(CarType.Sedan, new Suv(2500, 230, "White"));
 
-List<Car> cars = new() { suvCar, sedanCar, hatchBackCar };
+// Creating the sedan car
+CarFactory sedan = new SedanFactory();
+Car firstSedan = sedan.CreateCar("Blue");
+Car secondSedan = sedan.CreateCar("Red");
 
-foreach (Car car in cars)
+// Creating the hatchBack car
+CarFactory hatchBack = new HatchBackFactory();
+Car firstHatchBack = hatchBack.CreateCar("White");
+Car secondHatchBack = hatchBack.CreateCar("Black");
+
+List<Car> sedans = new List<Car> { firstSedan, secondSedan };
+foreach (var item in sedans)
 {
-    Console.WriteLine($"{car.Color} {car.EnginePower} KW - {car.MaximumSpeed} MPH  created!");
+    Console.WriteLine($"Type: {item.CarType} / EnginePower: {item.EnginePower} / MaximumSpeed: {item.MaximumSpeed} / Color: {item.Color}");
+}
+
+List<Car> hatchBacks = new List<Car> { firstHatchBack, secondHatchBack };
+foreach (var item in hatchBacks)
+{
+    Console.WriteLine($"Type: {item.CarType} / EnginePower: {item.EnginePower} / MaximumSpeed: {item.MaximumSpeed} / Color: {item.Color}");
 }
 
 
 // Abstract Factory
 public abstract class CarFactory
 {
-    private static Car Instance { get; set; }
-    public static Car GetCar => Instance;
-
-    public static Car CreateInstance(CarType carType, Car car)
-    {
-        Instance = carType switch
-        {
-            CarType.Suv => new Suv(car.EnginePower, car.MaximumSpeed, car.Color),
-            CarType.Sedan => new Sedan(car.EnginePower, car.MaximumSpeed, car.Color),
-            CarType.HatchBack => new HatchBack(car.EnginePower, car.MaximumSpeed, car.Color),
-        };
-
-        return Instance;
-    }
+    public abstract Car CreateCar(string color);
 }
+
 
 
 // Concrete Factories
-public class SuvFactory : CarFactory { }
+public class HatchBackFactory : CarFactory
+{
+    public override Car CreateCar(string color)
+    {
+        return new HatchBack
+        {
+            EnginePower = 1500,
+            MaximumSpeed = 280,
+            Color = color
+        };
+    }
+}
 
-public class SedanFactory : CarFactory { }
 
-public class HatchBackFactory : CarFactory { }
+public class SedanFactory : CarFactory
+{
+    public override Car CreateCar(string color)
+    {
+        return new Sedan
+        {
+            EnginePower = 2000,
+            MaximumSpeed = 320,
+            Color = color
+        };
+    }
+}
 
 
-// Abstract Product
+// Abstract Entity
 public abstract class Car
 {
-    protected Car(int enginePower, int maximumSpeed, string color)
-    {
-        EnginePower = enginePower;
-        MaximumSpeed = maximumSpeed;
-        Color = color;
-    }
     public int EnginePower { get; set; }
     public int MaximumSpeed { get; set; }
     public string Color { get; set; }
+    public abstract string CarType { get; }
 }
 
-// Concrete Products
-public class Suv : Car
+
+// Concrete Entities
+public class HatchBack : Car
 {
-    public Suv(int enginePower, int maximumSpeed, string color) : base(enginePower, maximumSpeed, color) { }
+    public override string CarType => nameof(HatchBack);
 }
 
 public class Sedan : Car
 {
-    public Sedan(int enginePower, int maximumSpeed, string color) : base(enginePower, maximumSpeed, color) { }
+    public override string CarType => nameof(Sedan);
 }
 
-public class HatchBack : Car
-{
-    public HatchBack(int enginePower, int maximumSpeed, string color) : base(enginePower, maximumSpeed, color) { }
-}
 
+//Enumerations
 public enum CarType
 {
-    Suv, Sedan, HatchBack
+    HatchBack,
+    Sedan
 }
-
