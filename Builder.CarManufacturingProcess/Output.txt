@@ -1,0 +1,13 @@
+Sedan has been stamped
+Sedan has been welded
+Sedan has been mointed
+Sedan has been painted
+CarType: Sedan EnginePower :2000 MaximumSpeed: 320 Color: White
+
+
+
+HatchBack has been stamped
+HatchBack has been welded
+HatchBack has been mointed
+HatchBack has been painted
+CarType: HatchBack EnginePower :1500 MaximumSpeed: 280 Color: Black
