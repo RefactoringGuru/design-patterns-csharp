@@ -81,10 +81,3 @@ public class Sedan : Car
     public override string CarType => nameof(Sedan);
 }
 
-
-//Enumerations
-public enum CarType
-{
-    HatchBack,
-    Sedan
-}
