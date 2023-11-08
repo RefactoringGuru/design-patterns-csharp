@@ -48,7 +48,7 @@ namespace RefactoringGuru.DesignPatterns.Mediator.Conceptual
         {
             if (ev == "A")
             {
-                Console.WriteLine("Mediator reacts on A and triggers folowing operations:");
+                Console.WriteLine("Mediator reacts on A and triggers following operations:");
                 this._component2.DoC();
             }
             if (ev == "D")
