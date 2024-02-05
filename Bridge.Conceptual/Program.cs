@@ -99,7 +99,7 @@ namespace RefactoringGuru.DesignPatterns.Bridge.Conceptual
     {
         public string OperationImplementation()
         {
-            return "ConcreteImplementationA: The result in platform B.\n";
+            return "ConcreteImplementationB: The result in platform B.\n";
         }
     }
 
