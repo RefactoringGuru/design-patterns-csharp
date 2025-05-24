@@ -5,12 +5,12 @@ This repository is part of the [Refactoring.Guru](https://refactoring.guru/desig
 It contains C# examples for all classic GoF design patterns. Each pattern includes two examples:
 
 - [x] **Conceptual** examples show the internal structure of patterns with detailed comments.
-- [ ] **RealWold** examples show how the patterns can be used in a real-world C# application.
+- [ ] **RealWorld** examples show how the patterns can be used in a real-world C# application.
 
 
 ## Requirements
 
-Most examples are console apps built using .NET Core 2.0.
+Most examples are console apps built using C# .NET 8.0.
 
 For the best experience, we recommend working with examples with these IDEs:
 

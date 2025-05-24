@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+  <PropertyGroup>
+    <!-- <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks> -->
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <RepositoryUrl>https://github.com/RefactoringGuru/design-patterns-csharp</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <AccelerateBuildsInVisualStudio>True</AccelerateBuildsInVisualStudio>
+  </PropertyGroup>
+</Project>
