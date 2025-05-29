@@ -13,11 +13,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 // EN: Use Json.NET library, you can download it from NuGet Package Manager
 //
 // RU: Используем библиотеку Json.NET, загрузить можно через NuGet Package
 // Manager
-using Newtonsoft.Json;
 
 namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
 {
@@ -41,8 +41,8 @@ namespace RefactoringGuru.DesignPatterns.Flyweight.Conceptual
 
         public void Operation(Car uniqueState)
         {
-            string s = JsonConvert.SerializeObject(this._sharedState);
-            string u = JsonConvert.SerializeObject(uniqueState);
+            string s = JsonSerializer.Serialize(this._sharedState);
+            string u = JsonSerializer.Serialize(uniqueState);
             Console.WriteLine($"Flyweight: Displaying shared {s} and unique {u} state.");
         }
     }
